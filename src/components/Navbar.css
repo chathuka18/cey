@@ -1,0 +1,45 @@
+/* Navbar.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+.navbar {
+    background-color: #2780e6;
+    padding: 10px 20px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    text-shadow: -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar-logo a {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.auth-button {
+    background-color: #2780e6;
+    color: white;
+    border: none;
+    width: 120px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.auth-button:hover {
+    border: #000;
+}

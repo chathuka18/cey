@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'EurostileExtendedTwo';
+    src: url('../fonts/Eurostile-ExtendedTwo.otf') format('otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.HomePage {
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../img/home.png');
+    background-size: cover;
+    background-position: center;
+    font-family:  sans-serif;
+    color: white;
+}
+
+.content {
+    background-color: rgba(254, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 20px;
+    animation: fadeIn 2s ease-in;
+    color: #000000;
+}
+
+.HomePage h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+.HomePage p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
