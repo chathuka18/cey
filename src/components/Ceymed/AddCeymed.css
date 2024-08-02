@@ -1,4 +1,4 @@
-.cey{
+.ceymed {
     background-image: url('../../img/ceymed.jpg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -9,64 +9,64 @@
     min-height: 100vh;
 }
 
-.form-container {
-    max-width: 650px;
-    width: 100%;
+.ceymed-container {
+    width: 30%;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f4f4f4;
+    border-radius: 5px;
 }
 
-.form-container h2 {
+h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: #333;
 }
 
-.form-container form {
-    display: flex;
-    flex-direction: column;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.form-container label {
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #555;
+label {
+    display: block;
+    margin-bottom: 5px;
 }
 
-.form-container input {
-    padding: 10px;
-    margin-bottom: 20px;
+input {
+    width: 100%;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
-    color: #333;
-    width: 90%;
 }
 
-.form-container button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #34a8eb;
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
     color: white;
-    font-size: 18px;
+    border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.form-container button:hover {
-    background-color: #2780e6;
+button:hover {
+    background-color: #0056b3;
 }
 
-.error-message {
-    color: red;
-    text-align: center;
-    margin-bottom: 20px;
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-.success-message {
-    color: green;
-    text-align: center;
-    margin-bottom: 20px;
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
