@@ -17,7 +17,7 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:8080/auth/login', { email, password });
+      const response = await axios.post('http://ec2-16-171-254-83.eu-north-1.compute.amazonaws.com:8080/auth/login', { email, password });
       const { token, role, message } = response.data;
       
       if (response.data.statusCode === 200) {
