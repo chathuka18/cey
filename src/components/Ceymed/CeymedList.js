@@ -8,6 +8,8 @@ const CeymedList = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const apiUrl = process.env.REACT_APP_API_URL
+
     useEffect(() => {
         fetchCeymed();
     }, []);
@@ -15,7 +17,7 @@ const CeymedList = () => {
     const fetchCeymed = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/ceymed');
+      const response = await axios.get( `${apiUrl}/api/ceymed`);
       setCeymed(response.data);
       setLoading(false);
     } catch (error) {
