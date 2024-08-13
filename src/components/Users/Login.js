@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
+import './Login.css';
 import login from '../../img/login.jpg';
 
 const Login = () => {
@@ -11,20 +11,21 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:8080';
+
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
     try {
-      // const response = await axios.post('http://localhost:8080/auth/login', { email, password });
-      const response = await axios.post('http://ec2-16-171-254-83.eu-north-1.compute.amazonaws.com:8080/auth/login', { email, password });
+      const response = await axios.post(`${apiUrl}/auth/login`, { email, password });
       const { token, role, message } = response.data;
-      
+
       if (response.data.statusCode === 200) {
         localStorage.setItem('token', token);
         localStorage.setItem('userRole', role);
-        
+
         switch(role) {
           case 'ADMIN': navigate('/admin'); break;
           case 'CMS': navigate('/cms'); break;
@@ -45,7 +46,6 @@ const Login = () => {
           case 'CHE': navigate('/che'); break;
           case 'NVOCC': navigate('/nvocc'); break;
           case 'SUPER': navigate('/super'); break;
-
           default: navigate('/');
         }
       } else {
@@ -60,7 +60,10 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page"style={{ login: `url(${login})`, login: 'cover'}}>
+    <div
+      className="login-page"
+      style={{ backgroundImage: `url(${login})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
       <div className="login-container">
         <h2>Welcome Back</h2>
         {error && <div className="error-message">{error}</div>}
