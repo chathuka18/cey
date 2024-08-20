@@ -7,6 +7,7 @@ const AddCAL = () => {
         id: '',
         crew_change: '',
         casual_caller_ops: '',
+        date: '',
     });
 
     const [error, setError] = useState(null);
@@ -25,7 +26,7 @@ const AddCAL = () => {
                 id: cal.id,
                 crew_change: cal.crew_change,
                 casual_caller_ops: cal.casual_caller_ops,
-                date: currentDate
+                date: cal.date
             });
             setSuccess('CAL added successfully!');
             setError(null);
@@ -33,6 +34,7 @@ const AddCAL = () => {
                 id: '',
                 crew_change: '',
                 casual_caller_ops: '',
+                date: ''
             });
         } catch (error) {
             console.error('There was an error adding the CAL!', error);
@@ -53,7 +55,7 @@ const AddCAL = () => {
             {success && <p className="success-message">{success}</p>}
             <form onSubmit={handleSubmit}>
                 <label>
-                    ID(CALyymm)   eg(CAL2401):
+                    ID(CALyymmww)   eg(CAL240101):
                     <input type="text" name="id" value={cal.id} onChange={handleChange} required />
                 </label>
                 <label>
@@ -63,6 +65,10 @@ const AddCAL = () => {
                 <label>
                     Casual Caller Ops:
                     <input type="number" name="casual_caller_ops" value={cal.casual_caller_ops} onChange={handleChange} required />
+                </label>
+                <label>
+                    Date:
+                    <input type="date" name="date"  value={cal.date} onChange={handleChange} required />
                 </label>
                 <button type="submit">Add CAL</button>
             </form>

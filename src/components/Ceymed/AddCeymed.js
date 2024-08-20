@@ -49,7 +49,7 @@ const AddCeymed = () => {
     return (
         <div className="ceymed">
             <div className="ceymed-container">
-                <h2>Ceymed Data Entry</h2>
+                <h2>Ceymed Healtcare Services</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="id">ID (CHEyymm) eg(CHE2401):</label>
