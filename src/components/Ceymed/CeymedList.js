@@ -15,7 +15,7 @@ const CeymedList = () => {
     const fetchCeymed = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/ceymed');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/ceymed`);
       setCeymed(response.data);
       setLoading(false);
     } catch (error) {
@@ -27,7 +27,7 @@ const CeymedList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/ceymed/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/ceymed/${id}`);
       fetchCeymed();
     } catch (error) {
       console.error('Error deleting data:', error);
