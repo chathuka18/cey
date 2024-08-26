@@ -61,7 +61,7 @@ function Register() {
     if (Object.keys(formErrors).length === 0) {
       setIsSubmitting(true);
       try {
-        const response = await axios.post('/auth/register', formData);
+        const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, formData);
         if (response.data.statusCode === 200) {
           setSubmitMessage('Registration successful!');
           // Reset form after successful registration
