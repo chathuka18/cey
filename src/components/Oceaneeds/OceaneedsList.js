@@ -17,7 +17,7 @@ const OceaneedsList = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('http://localhost:8080/api/oceaneeds', { timeout: 10000 });
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/oceaneeds`, { timeout: 10000 });
       setOceaneeds(response.data);
       setLoading(false);
     } catch (error) {
@@ -41,7 +41,7 @@ const OceaneedsList = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this entry?')) {
       try {
-        await axios.delete(`http://localhost:8080/api/oceaneeds/${id}`);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/oceaneeds/${id}`);
         fetchOceaneeds();
         alert('Entry deleted successfully');
       } catch (error) {
