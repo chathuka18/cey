@@ -23,7 +23,7 @@ const AddCSL = () => {
         e.preventDefault();
         const currentDate = new Date().toISOString().split('T')[0];
         try {
-            const response = await axios.post('http://localhost:8080/api/csl', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/csl`, {
                 id: csl.id,
                 crew_on_board: csl.crew_on_board,
                 new_principals: csl.new_principals,

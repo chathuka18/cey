@@ -13,7 +13,7 @@ const MCMList = () => {
   const fetchMCM = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/mcm');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/mcm`);
       setMCM(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const MCMList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/mcm/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/mcm/${id}`);
       fetchMCM();
     } catch (error) {
       console.error('Error deleting data:', error);

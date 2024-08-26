@@ -26,7 +26,7 @@ const AddCWS = () => {
         e.preventDefault();
         const currentDate = new Date().toISOString().split('T')[0];
         try {
-            const response = await axios.post('http://localhost:8080/api/cws', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/cws`, {
                 id: cws.id,
                 wh01_capacity: cws.wh01_capacity,
                 wh01_utilization: cws.wh01_utilization,

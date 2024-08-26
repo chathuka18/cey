@@ -24,9 +24,9 @@ const AddCeymed = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/ceymed', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/ceymed`, {
                 ...formData,
-                currentDate: new Date().toISOString().split('T')[0] // Set current date automatically
+                currentDate: new Date().toISOString().split('T')[0] 
             });
             setMessage('Ceymed data submitted successfully!');
             setFormData({

@@ -14,7 +14,7 @@ const CalifolinkList = () => {
   const fetchCalifolink= async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/cll');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cll`);
       setCalifolink(response.data);
       setLoading(false);
     } catch (error) {
@@ -26,7 +26,7 @@ const CalifolinkList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/cll/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cll/${id}`);
       fetchCalifolink();
     } catch (error) {
       console.error('Error deleting data:', error);

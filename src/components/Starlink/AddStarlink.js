@@ -26,7 +26,7 @@ const AddStarlink = () => {
         e.preventDefault();
         const currentDate = new Date().toISOString().split('T')[0];
         try {
-            const response = await axios.post('http://localhost:8080/api/starlink', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/starlink`, {
                 id: starlink.id,
                 full_rigging: starlink.full_rigging,
                 polylining: starlink.polylining,

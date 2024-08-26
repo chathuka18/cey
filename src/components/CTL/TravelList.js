@@ -13,7 +13,7 @@ const TravelList = () => {
   const fetchTravel = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/travel');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/travel`);
       setTravel(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const TravelList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/travel/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/travel/${id}`);
       fetchTravel();
     } catch (error) {
       console.error('Error deleting data:', error);

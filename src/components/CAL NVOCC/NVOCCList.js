@@ -13,7 +13,7 @@ const NVOCCList = () => {
     const fetchNVOCC = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/nvocc');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/nvocc`);
       setNVOCC(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const NVOCCList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/nvocc/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/nvocc/${id}`);
       fetchNVOCC();
     } catch (error) {
       console.error('Error deleting data:', error);

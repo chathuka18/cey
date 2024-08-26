@@ -40,7 +40,7 @@ const AdminPage = () => {
 
     const fetchTravels = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/travel');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/travel`);
             setTravels(response.data);
         } catch (error) {
             console.error('There was an error fetching the travels!', error);
@@ -50,7 +50,7 @@ const AdminPage = () => {
 
     const fetchOceaneeds = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/oceaneeds');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/oceaneeds`);
             setOceaneeds(response.data);
         } catch (error) {
             console.error('There was an error fetching the oceaneeds!', error);
@@ -60,7 +60,7 @@ const AdminPage = () => {
 
     const fetchCMS = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/cms');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cms`);
             setCMS(response.data);
         } catch (error) {
             console.error('There was an error fetching the CMS!', error);
@@ -70,7 +70,7 @@ const AdminPage = () => {
 
     const fetchCML = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/cml');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cml`);
             setCml(response.data);
         } catch (error) {
             console.error('There was an error fetching the CML!', error);
@@ -80,7 +80,7 @@ const AdminPage = () => {
 
     const fetchMSTS = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/msts');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/msts`);
             setMSTS(response.data);
         } catch (error) {
             console.error('There was an error fetching the MSTS!', error);
@@ -90,7 +90,7 @@ const AdminPage = () => {
 
     const fetchCalifolink = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/cll');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cll`);
             setCalifolink(response.data);
         } catch (error) {
             console.error('There was an error fetching the Califolink!', error);
@@ -100,7 +100,7 @@ const AdminPage = () => {
 
     const festchSTL = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/starlink');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/starlink`);
             setStarlink(response.data);
         } catch (error) {
             console.error('There was an error fetching the STL!', error);
@@ -110,7 +110,7 @@ const AdminPage = () => {
 
     const fetchCCS = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/ccs');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/ccs`);
             setCcs(response.data);
         } catch (error) {
             console.error('There was an error fetching the CCS!', error);
@@ -120,7 +120,7 @@ const AdminPage = () => {
 
     const fetchCSL = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/csl');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/csl`);
             setCsl(response.data);
         } catch (error) {
             console.error('There was an error fetching the CSL!', error);
@@ -130,7 +130,7 @@ const AdminPage = () => {
 
     const fetchMCM = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/mcm');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/mcm`);
             setMCM(response.data);
         } catch (error) {
             console.error('There was an error fetching the MCM!', error);
@@ -140,7 +140,7 @@ const AdminPage = () => {
 
     const fetchCMA = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/cma');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cma`);
             setCMA(response.data);
         } catch (error) {
             console.error('There was an error fetching the CMA!', error);
@@ -150,7 +150,7 @@ const AdminPage = () => {
 
     const fetchCSV = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/csv');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/csv`);
             setCsv(response.data);
         } catch (error) {
             console.error('There was an error fetching the CSV!', error);
@@ -160,7 +160,7 @@ const AdminPage = () => {
 
     const fetchCWS = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/cws');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cws`);
             setCWS(response.data);
         } catch (error) {
             console.error('There was an error fetching the CWS!', error);
@@ -169,7 +169,7 @@ const AdminPage = () => {
     }
     const fetchCES = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/ces');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/ces`);
             setCES(response.data);
         } catch (error) {
             console.error('There was an error fetching the CES!', error);
@@ -179,7 +179,7 @@ const AdminPage = () => {
 
     const fetchCAL = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/cal');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cal`);
             setCAL(response.data);
         } catch (error) {
             console.error('There was an error fetching the CAL!', error);
@@ -189,7 +189,7 @@ const AdminPage = () => {
 
     const fetchNVOCC = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/nvocc');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/nvocc`);
             setNVOCC(response.data);
         } catch (error) {
             console.error('There was an error fetching the NVOCC!', error);
@@ -199,7 +199,7 @@ const AdminPage = () => {
 
     const fetchCeymed = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/api/ceymed');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/ceymed`);
             setCeymed(response.data);
         } catch (error) {
             console.error('There was an error fetching the Ceymed!', error);

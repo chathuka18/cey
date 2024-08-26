@@ -13,7 +13,7 @@ const CWSList = () => {
   const fetchCWS = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/cws');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cws`);
       setCWS(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const CWSList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/cws/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cws/${id}`);
       fetchCWS();
     } catch (error) {
       console.error('Error deleting data:', error);

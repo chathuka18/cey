@@ -13,7 +13,7 @@ const CMSList = () => {
   const fetchCMS = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/cms');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cms`);
       setCMS(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const CMSList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/cms/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cms/${id}`);
       fetchCMS();
     } catch (error) {
       console.error('Error deleting data:', error);

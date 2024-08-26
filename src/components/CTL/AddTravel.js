@@ -25,7 +25,7 @@ const AddTravel = () => {
         e.preventDefault();
         const currentDate = new Date().toISOString().split('T')[0];
         try {
-            const response = await axios.post('http://localhost:8080/api/travel', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/travel`, {
                 id: travel.id,
                 tickets_Seafarer: travel.ticketsSeafarer,
                 tickets_FIT_Corporate: travel.ticketsFitCorporate,

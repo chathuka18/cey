@@ -22,7 +22,7 @@ const AddCES = () => {
         e.preventDefault();
         const currentDate = new Date().toISOString().split('T')[0];
         try {
-            const response = await axios.post('http://localhost:8080/api/ces', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/ces`, {
                 id: ces.id,
                 cdl_dry_docking: ces.cdl_dry_docking,
                 no_of_vessels: ces.no_of_vessels,

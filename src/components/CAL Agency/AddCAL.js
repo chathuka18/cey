@@ -22,7 +22,7 @@ const AddCAL = () => {
         e.preventDefault();
         const currentDate = new Date().toISOString().split('T')[0];
         try {
-            const response = await axios.post('http://localhost:8080/api/cal', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/cal`, {
                 id: cal.id,
                 crew_change: cal.crew_change,
                 casual_caller_ops: cal.casual_caller_ops,

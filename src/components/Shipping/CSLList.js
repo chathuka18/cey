@@ -13,7 +13,7 @@ const CSLList = () => {
   const fetchCSL = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/csl');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/csl`);
       setCsl(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const CSLList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/csl/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/csl/${id}`);
       fetchCSL();
     } catch (error) {
       console.error('Error deleting data:', error);

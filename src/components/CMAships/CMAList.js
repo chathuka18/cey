@@ -13,7 +13,7 @@ const CMAList = () => {
   const fetchCMA = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/cma');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cma`);
       setCMA(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const CMAList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/cma/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/cma/${id}`);
       fetchCMA();
     } catch (error) {
       console.error('Error deleting data:', error);

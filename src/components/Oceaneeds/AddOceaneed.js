@@ -26,9 +26,9 @@ const AddOceaneed = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/api/oceaneeds', {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/oceaneeds`, {
                 ...formData,
-                currentDate: new Date().toISOString().split('T')[0] // Set current date automatically
+                currentDate: new Date().toISOString().split('T')[0] 
             });
             setMessage('Oceaneeds data submitted successfully!');
             setFormData({

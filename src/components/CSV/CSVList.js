@@ -13,7 +13,7 @@ const CSVList = () => {
   const fetchCSV = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:8080/api/csv');
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/csv`);
       setCSV(response.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ const CSVList = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/api/csv/${id}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/csv/${id}`);
       fetchCSV();
     } catch (error) {
       console.error('Error deleting data:', error);
