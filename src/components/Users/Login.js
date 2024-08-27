@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; 
-import login from '../../img/login.jpg';
+import logo from '../../img/ceyline-logo.png'; // Make sure the path is correct
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,12 +18,12 @@ const Login = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { email, password });
       const { token, role, message } = response.data;
-      
+
       if (response.data.statusCode === 200) {
         localStorage.setItem('token', token);
         localStorage.setItem('userRole', role);
-        
-        switch(role) {
+
+        switch (role) {
           case 'ADMIN': navigate('/admin'); break;
           case 'CMS': navigate('/cms'); break;
           case 'CTL': navigate('/ctl'); break;
@@ -59,37 +58,50 @@ const Login = () => {
   };
 
   return (
-    <div className="login-page"style={{ login: `url(${login})`, login: 'cover'}}>
-      <div className="login-container">
-        <h2>Welcome Back</h2>
-        {error && <div className="error-message">{error}</div>}
-        <form onSubmit={handleLogin}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input 
-              type="email" 
+    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-4">
+      {/* Left Section */}
+      <div className="flex flex-col justify-center items-center md:w-1/2 px-4 md:px-20 mb-8 md:mb-0">
+        {/* <img
+          src={logo}
+          alt="CEYLINE Logo"
+          className="w-3/4 md:w-1/2 mx-auto mb-8"
+        /> */}
+        <h1 className="text-4xl md:text-6xl font-bold text-blue-600 mb-4 text-center">CEYLINE MIS</h1>
+        <p className="text-lg md:text-2xl text-center text-blue-400">WHAT WE DO, INSPIRES</p>
+      </div>
+
+      {/* Right Section */}
+      <div className="flex justify-center items-center w-full md:w-1/3 bg-white p-8 rounded-lg shadow-lg">
+        <div className="w-full">
+          <form onSubmit={handleLogin} className="space-y-4">
+            <input
+              type="email"
               id="email"
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
-              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Email address"
             />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input 
-              type="password" 
+            <input
+              type="password"
               id="password"
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Password"
             />
-          </div>
-          <button type="submit" disabled={isLoading} className="login-button">
-            {isLoading ? 'Logging in...' : 'Log In'}
-          </button>
-        </form>
+            {error && <div className="text-red-600 text-center text-sm mb-4">{error}</div>}
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {isLoading ? 'Logging in...' : 'Log In'}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
