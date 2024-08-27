@@ -41,6 +41,7 @@ import CSLList from './components/Shipping/CSLList';
 import CWSList from './components/Warehouse/CWSList';
 import AddCeymed from './components/Ceymed/AddCeymed';
 import CeymedList from './components/Ceymed/CeymedList';
+import Navbar from './components/Navbar';
 
 
 const App = () => {
@@ -48,6 +49,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
+        </Routes>
+        <Navbar />
+        
+        <Routes>
         <Route 
           path="/companylist" 
           element={

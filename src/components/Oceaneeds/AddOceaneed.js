@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './AddOceaneed.css';
+import UserProfile from '../Users/UserProfile';
 
 const AddOceaneed = () => {
     const [formData, setFormData] = useState({
@@ -132,6 +133,7 @@ const AddOceaneed = () => {
                         required 
                     />
                 </div>
+                <UserProfile />
                 <button type="submit">Submit</button>
             </form>
             {message && <p className="message">{message}</p>}
