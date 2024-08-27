@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import logo from '../../img/ceyline-logo.png'; // Make sure the path is correct
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -17,11 +17,13 @@ const Login = () => {
 
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { email, password });
-      const { token, role, message } = response.data;
+      const { token, role, message, name } = response.data;
 
       if (response.data.statusCode === 200) {
         localStorage.setItem('token', token);
         localStorage.setItem('userRole', role);
+        localStorage.setItem('userName', name);
+        localStorage.setItem('userEmail', email);
 
         switch (role) {
           case 'ADMIN': navigate('/admin'); break;
@@ -61,11 +63,6 @@ const Login = () => {
     <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-gray-100 p-4">
       {/* Left Section */}
       <div className="flex flex-col justify-center items-center md:w-1/2 px-4 md:px-20 mb-8 md:mb-0">
-        {/* <img
-          src={logo}
-          alt="CEYLINE Logo"
-          className="w-3/4 md:w-1/2 mx-auto mb-8"
-        /> */}
         <h1 className="text-4xl md:text-6xl font-bold text-blue-600 mb-4 text-center">CEYLINE MIS</h1>
         <p className="text-lg md:text-2xl text-center text-blue-400">WHAT WE DO, INSPIRES</p>
       </div>
