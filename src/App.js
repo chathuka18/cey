@@ -5,8 +5,6 @@ import Login from './components/Users/Login';
 import AddTravel from './components/CTL/AddTravel';
 import AddOceaneed from './components/Oceaneeds/AddOceaneed';
 import ProtectedRoute from './components/Users/ProtectedRoute';
-import Navbar from './components/Navbar';
-import HomePage from './components/HomePage';
 import AddCMS from './components/CMS/AddCMS';
 import AddCML from './components/CML/AddCML';
 import AddMSTS from './components/MSTS/AddMSTS';
@@ -48,9 +46,8 @@ import CeymedList from './components/Ceymed/CeymedList';
 const App = () => {
   return (
     <Router>
-      <Navbar />
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login />} />
         <Route 
           path="/companylist" 
           element={
@@ -358,7 +355,7 @@ const App = () => {
           }
         />
       
-        <Route path="/" element={<HomePage />} />
+       
       </Routes>
     </Router>
   );
