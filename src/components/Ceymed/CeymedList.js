@@ -45,8 +45,13 @@ const CeymedList = () => {
                     <tr>
                         <th>ID</th>
                         <th>No of Reports</th>
-                        <th>No of Chanelling Patients</th>
+                        <th>No of Channelling Patients</th>
+                        <th>No of Consultants Visited</th>
                         <th>No of Cooperate Staff Medicals</th>
+                        <th>No of Prescriptions</th>
+                        <th>No of OPD</th>
+                        <th>No of ETU</th>
+                        <th>No of Contribution Center</th>
                         <th>Date</th>
                         <th>Actions</th>
                     </tr>
@@ -57,7 +62,12 @@ const CeymedList = () => {
                             <td>{item.id}</td>
                             <td>{item.no_of_reports}</td>
                             <td>{item.no_of_chanelling_patients}</td>
+                            <td>{item.no_of_consultant_visited}</td>
                             <td>{item.no_of_cooperate_staff_medicals}</td>
+                            <td>{item.no_of_prescriptions}</td>
+                            <td>{item.no_of_OPD}</td>
+                            <td>{item.no_of_ETU}</td>
+                            <td>{item.no_of_contribution_center}</td>
                             <td>{item.date}</td>
                             <td>
                                 <button onClick={() => handleDelete(item.id)}>Delete</button>

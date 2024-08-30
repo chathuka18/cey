@@ -7,7 +7,12 @@ const AddCeymed = () => {
         id: '',
         no_of_reports: '',
         no_of_chanelling_patients: '',
+        no_of_consultant_visited: '',
         no_of_cooperate_staff_medicals: '',
+        no_of_prescriptions: '',
+        no_of_OPD: '',
+        no_of_ETU: '',
+        no_of_contribution_center: '',
         date: ''
     });
 
@@ -33,7 +38,12 @@ const AddCeymed = () => {
                 id: '',
                 no_of_reports: '',
                 no_of_chanelling_patients: '',
+                no_of_consultant_visited: '',
                 no_of_cooperate_staff_medicals: '',
+                no_of_prescriptions: '',
+                no_of_OPD: '',
+                no_of_ETU: '',
+                no_of_contribution_center: '',
                 date: ''
             });
         } catch (error) {
@@ -74,12 +84,23 @@ const AddCeymed = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="no_of_chanelling_patients">Number of Chanelling Patients:</label>
+                        <label htmlFor="no_of_chanelling_patients">Number of Channelling Patients:</label>
                         <input 
                             type="number" 
                             id="no_of_chanelling_patients" 
                             name="no_of_chanelling_patients" 
                             value={formData.no_of_chanelling_patients} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="no_of_consultant_visited">Number of Consultants Visited:</label>
+                        <input 
+                            type="number" 
+                            id="no_of_consultant_visited" 
+                            name="no_of_consultant_visited" 
+                            value={formData.no_of_consultant_visited} 
                             onChange={handleChange} 
                             required 
                         />
@@ -91,6 +112,51 @@ const AddCeymed = () => {
                             id="no_of_cooperate_staff_medicals" 
                             name="no_of_cooperate_staff_medicals" 
                             value={formData.no_of_cooperate_staff_medicals} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+
+
+                    <div className="form-group">
+                        <label htmlFor="no_of_prescriptions">Number of Prescriptions:</label>
+                        <input 
+                            type="number" 
+                            id="no_of_prescriptions" 
+                            name="no_of_prescriptions" 
+                            value={formData.no_of_prescriptions} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="no_of_OPD">Number of OPD:</label>
+                        <input 
+                            type="number" 
+                            id="no_of_OPD" 
+                            name="no_of_OPD" 
+                            value={formData.no_of_OPD} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="no_of_ETU">Number of ETU:</label>
+                        <input 
+                            type="number" 
+                            id="no_of_ETU" 
+                            name="no_of_ETU" 
+                            value={formData.no_of_ETU} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div><div className="form-group">
+                        <label htmlFor="no_of_contribution_center">Number of Contribution Center:</label>
+                        <input 
+                            type="number" 
+                            id="no_of_contribution_center" 
+                            name="no_of_contribution_center" 
+                            value={formData.no_of_contribution_center} 
                             onChange={handleChange} 
                             required 
                         />
