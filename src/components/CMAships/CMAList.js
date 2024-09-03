@@ -32,44 +32,54 @@ const CMAList = () => {
       setError('Failed to delete entry. Please try again.');
     }
   };
-    return (
-        <div className="company-list">
-      <div className="section">
-        <h2 className="section-title">CMA Ships Data</h2>
-        <div className="subsection">
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Crew On Board</th>
-                        <th>New Principals</th>
-                        <th>Income per COB</th>
-                        <th>Cost Per C.O.B</th>
-                        <th>Date</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cma.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.crew_on_board}</td>
-                            <td>{item.new_principals}</td>
-                            <td>{item.income}</td>
-                            <td>{item.cost}</td>
-                            <td>{item.date}</td>
-                            <td>
-                                <button onClick={() => handleDelete(item.id)}>Delete</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
+  return (
+    <div className="p-6 bg-gray-100 min-h-screen flex items-center justify-center">
+      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">CMA Ships Data</h2>
+        {error && <p className="text-red-500 mb-4">{error}</p>}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white border border-gray-300 rounded-md">
+              <thead>
+                <tr className="bg-gray-200 border-b border-gray-300">
+                  <th className="py-2 px-4 text-left">ID</th>
+                  <th className="py-2 px-4 text-left">Crew On Board</th>
+                  <th className="py-2 px-4 text-left">New Principals</th>
+                  <th className="py-2 px-4 text-left">Income per COB</th>
+                  <th className="py-2 px-4 text-left">Cost Per C.O.B</th>
+                  <th className="py-2 px-4 text-left">Date</th>
+                  <th className="py-2 px-4 text-left">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {cma.map((item) => (
+                  <tr key={item.id} className="border-b border-gray-300">
+                    <td className="py-2 px-4">{item.id}</td>
+                    <td className="py-2 px-4">{item.crew_on_board}</td>
+                    <td className="py-2 px-4">{item.new_principals}</td>
+                    <td className="py-2 px-4">{item.income}</td>
+                    <td className="py-2 px-4">{item.cost}</td>
+                    <td className="py-2 px-4">{item.date}</td>
+                    <td className="py-2 px-4">
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="text-white-500 hover:text-gray-700"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
-        </div>
-        </div>
+          </div>
+        )}
       </div>
-    );
+    </div>
+  );
 };
 
 export default CMAList;

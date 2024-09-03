@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './AddCeymed.css';
+import cheImg from '../../img/ceymed.jpg';
 
 const AddCeymed = () => {
     const [formData, setFormData] = useState({
@@ -57,124 +57,43 @@ const AddCeymed = () => {
     };
 
     return (
-        <div className="ceymed">
-            <div className="ceymed-container">
-                <h2>Ceymed Healtcare Services</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="id">ID (CHEyymm) eg(CHE2401):</label>
-                        <input 
-                            type="text" 
-                            id="id" 
-                            name="id" 
-                            value={formData.id} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="no_of_reports">Number of Reports:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_reports" 
-                            name="no_of_reports" 
-                            value={formData.no_of_reports} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="no_of_chanelling_patients">Number of Channelling Patients:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_chanelling_patients" 
-                            name="no_of_chanelling_patients" 
-                            value={formData.no_of_chanelling_patients} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="no_of_consultant_visited">Number of Consultants Visited:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_consultant_visited" 
-                            name="no_of_consultant_visited" 
-                            value={formData.no_of_consultant_visited} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="no_of_cooperate_staff_medicals">Number of Cooperate Staff Medicals:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_cooperate_staff_medicals" 
-                            name="no_of_cooperate_staff_medicals" 
-                            value={formData.no_of_cooperate_staff_medicals} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-
-
-                    <div className="form-group">
-                        <label htmlFor="no_of_prescriptions">Number of Prescriptions:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_prescriptions" 
-                            name="no_of_prescriptions" 
-                            value={formData.no_of_prescriptions} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="no_of_OPD">Number of OPD:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_OPD" 
-                            name="no_of_OPD" 
-                            value={formData.no_of_OPD} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="no_of_ETU">Number of ETU:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_ETU" 
-                            name="no_of_ETU" 
-                            value={formData.no_of_ETU} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div><div className="form-group">
-                        <label htmlFor="no_of_contribution_center">Number of Contribution Center:</label>
-                        <input 
-                            type="number" 
-                            id="no_of_contribution_center" 
-                            name="no_of_contribution_center" 
-                            value={formData.no_of_contribution_center} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="date">Date:</label>
-                        <input 
-                            type="date" 
-                            id="date" 
-                            name="date" 
-                            value={formData.date} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                    <button type="submit">Submit</button>
+        <div className="flex items-center justify-center min-h-screen bg-cover bg-center" style={{ backgroundImage: `url(${cheImg})` }}>
+            <div className="max-w-lg w-full bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Ceymed Healthcare Services</h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    {[
+                        { label: 'ID (CHEyymmww) eg(CHE240101):', name: 'id', type: 'text' },
+                        { label: 'Number of Reports:', name: 'no_of_reports', type: 'number' },
+                        { label: 'Number of Channelling Patients:', name: 'no_of_chanelling_patients', type: 'number' },
+                        { label: 'Number of Consultants Visited:', name: 'no_of_consultant_visited', type: 'number' },
+                        { label: 'Number of Cooperate Staff Medicals:', name: 'no_of_cooperate_staff_medicals', type: 'number' },
+                        { label: 'Number of Prescriptions:', name: 'no_of_prescriptions', type: 'number' },
+                        { label: 'Number of OPD:', name: 'no_of_OPD', type: 'number' },
+                        { label: 'Number of ETU:', name: 'no_of_ETU', type: 'number' },
+                        { label: 'Number of Contribution Center:', name: 'no_of_contribution_center', type: 'number' },
+                        { label: 'Date:', name: 'date', type: 'date' }
+                    ].map(({ label, name, type }) => (
+                        <div key={name} className="form-group">
+                            <label htmlFor={name} className="block text-gray-700 font-medium mb-1">{label}</label>
+                            <input 
+                                type={type} 
+                                id={name} 
+                                name={name} 
+                                value={formData[name]} 
+                                onChange={handleChange} 
+                                required 
+                                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            />
+                        </div>
+                    ))}
+                    <button 
+                        type="submit" 
+                        className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                        Submit
+                    </button>
                 </form>
-                {message && <p className="message">{message}</p>}
+                {message && <p className={`mt-4 ${message.startsWith('Error') ? 'text-red-500' : 'text-green-500'}`}>{message}</p>}
             </div>
         </div>
     );
