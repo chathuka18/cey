@@ -9,7 +9,7 @@ function Register() {
   { value: 'CMS', label: 'Ceyline Maritime Services ' },
   { value: 'CML', label: 'CML	Ships' },
   { value: 'CAL', label: 'CAL Agency' },
-  { value: 'CALNVOCC', label: 'CAL NVOCC' },
+  { value: 'NVOCC', label: 'CAL NVOCC' },
   { value: 'CES', label: 'Ceyline Engienering' },
   { value: 'CLL', label: 'Califolink' },
   { value: 'STL', label: 'Starlink One' },
