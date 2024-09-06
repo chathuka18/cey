@@ -22,7 +22,9 @@ function Register() {
   { value: 'CMA', label: 'CMA Ships' },
   { value: 'CTL', label: 'Ceyline Travels' },
   { value: 'CHE', label: 'Ceymed Healthcare Services' },
-  { value: 'SUPER', label: 'S Admin' }
+  { value: 'SUPER', label: 'S Admin' },
+
+  { value: 'onlUpdate', label: 'Oceaneeds Update' }
 ];
 
   const [formData, setFormData] = useState({

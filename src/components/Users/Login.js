@@ -46,6 +46,8 @@ const Login = () => {
           case 'NVOCC': navigate('/nvocc'); break;
           case 'SUPER': navigate('/super'); break;
 
+          case 'onlUpdate': navigate('/onlUpdate'); break;
+
           default: navigate('/');
         }
       } else {
