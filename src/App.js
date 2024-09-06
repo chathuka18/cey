@@ -42,8 +42,6 @@ import CWSList from './components/Warehouse/CWSList';
 import AddCeymed from './components/Ceymed/AddCeymed';
 import CeymedList from './components/Ceymed/CeymedList';
 import Navbar from './components/Navbar';
-import OceanUpdate from './components/Oceaneeds/OceanUpdate';
-
 
 const App = () => {
   return (
@@ -361,14 +359,14 @@ const App = () => {
           }
         />
 
-        <Route
+        {/* <Route
         path='onlUpdate'
         element={
           <ProtectedRoute allowedRoles={['onlUpdate']}>
-            <OceanUpdate/>
+            <#/>
           </ProtectedRoute>
         }
-        />
+        /> */}
       
        
       </Routes>
