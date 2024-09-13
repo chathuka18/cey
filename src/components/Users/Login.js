@@ -46,8 +46,25 @@ const Login = () => {
           case 'NVOCC': navigate('/nvocc'); break;
           case 'SUPER': navigate('/super'); break;
 
+          case 'cmsUpdate': navigate('/cmsUpdate'); break;
+          case 'ctlUpdate': navigate('/ctlUpdate'); break;
           case 'onlUpdate': navigate('/onlUpdate'); break;
+          case 'cmlUpdate': navigate('/cmlUpdate'); break;
+          case 'mstsUpdate': navigate('/mstsUpdate'); break;
+          case 'cllUpdate': navigate('/cllUpdate'); break;
+          case 'stlUpdate': navigate('/stlUpdate'); break;
+          case 'ccsUpdate': navigate('/ccsUpdate'); break;
+          case 'cslUpdate': navigate('/cslUpdate'); break;
+          case 'mcmUpdate': navigate('/mcmUpdate'); break;
+          case 'cmaUpdate': navigate('/cmaUpdate'); break;
+          case 'csvUpdate': navigate('/csvUpdate'); break;
+          case 'cwsUpdate': navigate('/cwsUpdate'); break;
+          case 'cesUpdate': navigate('/cesUpdate'); break;
+          case 'calUpdate': navigate('/calUpdate'); break;
+          case 'cheUpdate': navigate('/cheUpdate'); break;
+          case 'nvoccUpdate': navigate('/nvoccUpdate'); break;
 
+          
           default: navigate('/');
         }
       } else {
