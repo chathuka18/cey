@@ -24,7 +24,23 @@ function Register() {
   { value: 'CHE', label: 'Ceymed Healthcare Services' },
   { value: 'SUPER', label: 'S Admin' },
 
-  { value: 'onlUpdate', label: 'Oceaneeds Update' }
+  { value: 'onlUpdate', label: 'Oceaneeds Update' },
+  { value: 'cmsUpdate', label: 'CMS Update' },
+  { value: 'cmlUpdate', label: 'CML	Update' },
+  { value: 'calUpdate', label: 'CAL Update' },
+  { value: 'nvoccUpdate', label: 'CAL NVOCC Update' },
+  { value: 'cesUpdate', label: 'Ceyline Engienering Update' },
+  { value: 'cllUpdate', label: 'Califolink Update' },
+  { value: 'stlUpdate', label: 'Starlink One Update' },
+  { value: 'mstsUpdate', label: 'MSTS Update' },
+  { value: 'ccsUpdate', label: 'Cey Container Update' },
+  { value: 'cwsUpdate', label: 'Ceyline Warehouse Update' },
+  { value: 'csvUpdate', label: 'Cargo Server Update' },
+  { value: 'cslUpdate', label: 'Ceyline Shipping Update' },
+  { value: 'mcmUpdate', label: 'Mercantile Marine Update' },
+  { value: 'cmaUpdate', label: 'CMA Update' },
+  { value: 'ctlUpdate', label: 'Ceyline Travels Update' },
+  { value: 'cheUpdate', label: 'Ceymed Update' }
 ];
 
   const [formData, setFormData] = useState({
