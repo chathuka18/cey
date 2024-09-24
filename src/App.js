@@ -43,6 +43,7 @@ import AddCeymed from './components/Ceymed/AddCeymed';
 import CeymedList from './components/Ceymed/CeymedList';
 import Navbar from './components/Navbar';
 import UpdateOceaneed from './components/Oceaneeds/UpdateOceaneed';
+import UpdateCeymed from './components/Ceymed/UpdateCeymed'
 
 const App = () => {
   return (
@@ -365,6 +366,14 @@ const App = () => {
         element={
           <ProtectedRoute allowedRoles={['onlUpdate']}>
             <UpdateOceaneed />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='cheUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cheUpdate']}>
+            <UpdateCeymed />
           </ProtectedRoute>
         }
         />
