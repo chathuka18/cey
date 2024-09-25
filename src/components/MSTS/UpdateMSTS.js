@@ -63,6 +63,24 @@ const MSTSList = () => {
     }
   };
 
+  
+  const fieldLabels = {
+    id: 'ID',
+    pti: 'No. of PTI',
+    monitoring_days: 'No. of Monitoring Days',
+    fleet: 'Reefer Renting Fleet',
+    owned_rent: 'On Hire Reefer – MSTS Owned',
+    on_hire: 'Outsource Reefer – On Hire',
+    re_work: 'Re-work Operations (No. of Jobs)',
+    survey: 'Survey (No. of Jobs)',
+    reefer_spare: 'No. of Reefer Spare Part Supplies',
+    vessel_spare: 'No. of Vessel Spare Part Supplies',
+    reefer_repairs: 'No. of Reefer Repairs',
+    exports: 'No. of Perishable Exports',
+    maldives: 'Maldives',
+    date: 'Date'
+  };
+
   if (loading) return <div className="text-center py-4">Loading...</div>;
   if (error) return <div className="text-red-500 text-center py-4">{error}</div>;
 
@@ -84,7 +102,7 @@ const MSTSList = () => {
             <h3 className="text-xl font-semibold mb-3">Update Latest Record</h3>
             {Object.keys(updateData).map((key) => (
               <div key={key} className="mb-3">
-                <label className="block text-sm font-medium text-gray-700">{key.replace(/_/g, ' ')}</label>
+                <label className="block text-sm font-medium text-gray-700">{fieldLabels[key]}</label>
                 <input
                   type={key === 'date' ? 'date' : key === 'id' ? 'text' : 'number'}
                   name={key}
@@ -117,16 +135,16 @@ const MSTSList = () => {
             <thead>
               <tr className="bg-gray-200 text-left">
                 <th className="px-4 py-2 border-b">ID</th>
-                <th className="px-4 py-2 border-b">PTI</th>
-                <th className="px-4 py-2 border-b">Monitoring Days</th>
-                <th className="px-4 py-2 border-b">Fleet</th>
-                <th className="px-4 py-2 border-b">Owned/Rent</th>
-                <th className="px-4 py-2 border-b">On Hire</th>
-                <th className="px-4 py-2 border-b">Re-work</th>
-                <th className="px-4 py-2 border-b">Survey</th>
-                <th className="px-4 py-2 border-b">Reefer Spare</th>
-                <th className="px-4 py-2 border-b">Vessel Spare</th>
-                <th className="px-4 py-2 border-b">Reefer Repairs</th>
+                <th className="px-4 py-2 border-b">No. of. PTI</th>
+                <th className="px-4 py-2 border-b">No. of. Monitoring Days</th>
+                <th className="px-4 py-2 border-b">Reefer Renting Fleet</th>
+                <th className="px-4 py-2 border-b">On Hire Reefer – MSTS Owned</th>
+                <th className="px-4 py-2 border-b">Out Source Reefer – On Hire</th>
+                <th className="px-4 py-2 border-b">Re-work Operations (No. of. Jobs): </th>
+                <th className="px-4 py-2 border-b">Survey (No. of. Jobs): </th>
+                <th className="px-4 py-2 border-b">No. of Reefer Spare part supplies:</th>
+                <th className="px-4 py-2 border-b">No. of Vessel Spare part supplies:</th>
+                <th className="px-4 py-2 border-b">No. of. Reefer Repairs: </th>
                 <th className="px-4 py-2 border-b">Exports</th>
                 <th className="px-4 py-2 border-b">Maldives</th>
                 <th className="px-4 py-2 border-b">Date</th>
@@ -163,6 +181,8 @@ const MSTSList = () => {
             </tbody>
           </table>
         </div>
+        
+        {/* Table Section */}
       </div>
     </div>
   );
