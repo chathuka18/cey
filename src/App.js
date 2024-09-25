@@ -44,6 +44,9 @@ import CeymedList from './components/Ceymed/CeymedList';
 import Navbar from './components/Navbar';
 import UpdateOceaneed from './components/Oceaneeds/UpdateOceaneed';
 import UpdateCeymed from './components/Ceymed/UpdateCeymed'
+import UpdateCML from './components/CML/UpdateCML'
+import UpdateCSL from './components/Shipping/UpdateCSL'
+// import UpdateTravel from './components/CTL/UpdateTravel'
 
 const App = () => {
   return (
@@ -377,6 +380,30 @@ const App = () => {
           </ProtectedRoute>
         }
         />
+        <Route
+        path='cmlUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cmlUpdate']}>
+            <UpdateCML />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='cslUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cslUpdate']}>
+            <UpdateCSL />
+          </ProtectedRoute>
+        }
+        />
+        {/* <Route
+        path='ctlUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['ctlUpdate']}>
+            <UpdateTravel />
+          </ProtectedRoute>
+        }
+        /> */}
         
       
        
