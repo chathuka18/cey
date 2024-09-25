@@ -44,20 +44,20 @@ const MSTSList = () => {
         <h2 className="text-2xl font-bold mb-6 text-center">MSTS Data</h2>
         <div className="overflow-x-auto">
           <table className="w-full table-auto border-collapse">
-            <thead>
+           <thead>
               <tr className="bg-gray-200 text-left">
                 <th className="px-4 py-2 border-b">ID</th>
-                <th className="px-4 py-2 border-b">PTI</th>
-                <th className="px-4 py-2 border-b">Monitoring Days</th>
-                <th className="px-4 py-2 border-b">Fleet</th>
-                <th className="px-4 py-2 border-b">Owned/Rent</th>
-                <th className="px-4 py-2 border-b">On Hire</th>
-                <th className="px-4 py-2 border-b">Re-work</th>
-                <th className="px-4 py-2 border-b">Survey</th>
-                <th className="px-4 py-2 border-b">Reefer Spare</th>
-                <th className="px-4 py-2 border-b">Vessel Spare</th>
-                <th className="px-4 py-2 border-b">Reefer Repairs</th>
-                <th className="px-4 py-2 border-b">Exports</th>
+                <th className="px-4 py-2 border-b">No. of. PTI</th>
+                <th className="px-4 py-2 border-b">No. of. Monitoring Days</th>
+                <th className="px-4 py-2 border-b">Reefer Renting Fleet</th>
+                <th className="px-4 py-2 border-b">On Hire Reefer – MSTS Owned</th>
+                <th className="px-4 py-2 border-b">Out Source Reefer – On Hire</th>
+                <th className="px-4 py-2 border-b">Re-work Operations (No. of. Jobs): </th>
+                <th className="px-4 py-2 border-b">Survey (No. of. Jobs): </th>
+                <th className="px-4 py-2 border-b">No. of Reefer Spare part supplies:</th>
+                <th className="px-4 py-2 border-b">No. of Vessel Spare part supplies:</th>
+                <th className="px-4 py-2 border-b">No. of. Reefer Repairs: </th>
+                <th className="px-4 py-2 border-b">No. of Perishable Exports</th>
                 <th className="px-4 py-2 border-b">Maldives</th>
                 <th className="px-4 py-2 border-b">Date</th>
                 <th className="px-4 py-2 border-b">Actions</th>
