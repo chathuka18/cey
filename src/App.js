@@ -46,7 +46,7 @@ import UpdateOceaneed from './components/Oceaneeds/UpdateOceaneed';
 import UpdateCeymed from './components/Ceymed/UpdateCeymed'
 import UpdateCML from './components/CML/UpdateCML'
 import UpdateCSL from './components/Shipping/UpdateCSL'
-// import UpdateTravel from './components/CTL/UpdateTravel'
+import UpdateMSTS from './components/MSTS/UpdateMSTS'
 
 const App = () => {
   return (
@@ -396,14 +396,14 @@ const App = () => {
           </ProtectedRoute>
         }
         />
-        {/* <Route
-        path='ctlUpdate'
+        <Route
+        path='mstsUpdate'
         element={
-          <ProtectedRoute allowedRoles={['ctlUpdate']}>
-            <UpdateTravel />
+          <ProtectedRoute allowedRoles={['mstsUpdate']}>
+            <UpdateMSTS />
           </ProtectedRoute>
         }
-        /> */}
+        />
         
       
        
