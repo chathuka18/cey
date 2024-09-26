@@ -47,6 +47,7 @@ import UpdateCeymed from './components/Ceymed/UpdateCeymed'
 import UpdateCML from './components/CML/UpdateCML'
 import UpdateCSL from './components/Shipping/UpdateCSL'
 import UpdateMSTS from './components/MSTS/UpdateMSTS'
+import UpdateCalifolink from './components/CalifoLink/UpdateCalifolink'
 
 const App = () => {
   return (
@@ -404,7 +405,14 @@ const App = () => {
           </ProtectedRoute>
         }
         />
-        
+        <Route
+        path='cllUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cllUpdate']}>
+            <UpdateCalifolink />
+          </ProtectedRoute>
+        }
+        />
       
        
       </Routes>
