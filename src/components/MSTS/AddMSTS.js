@@ -68,7 +68,7 @@ const AddMSTS = () => {
                 {success && <p className="text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">ID:()</label>
+                        <label className="text-sm font-medium text-gray-700 mb-1">ID (MSTSyymmww) eg(MSTS240101):</label>
                         <input
                             type="text"
                             name="id"
