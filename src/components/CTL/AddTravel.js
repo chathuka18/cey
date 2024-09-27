@@ -65,7 +65,7 @@ const AddTravel = () => {
                 {success && <p className="text-green-500 text-center mb-4">{success}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">ID (CTLyymm) eg(CTL2401):</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">ID (CTLyymmww) eg(CTL240101):</label>
                         <input 
                             type="text" 
                             name="id" 

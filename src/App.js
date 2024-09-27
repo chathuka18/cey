@@ -48,6 +48,8 @@ import UpdateCML from './components/CML/UpdateCML'
 import UpdateCSL from './components/Shipping/UpdateCSL'
 import UpdateMSTS from './components/MSTS/UpdateMSTS'
 import UpdateCalifolink from './components/CalifoLink/UpdateCalifolink'
+import UpdateTravel from './components/CTL/UpdateTravel'
+import UpdateCMS from './components/CMS/UpdateCMS'
 
 const App = () => {
   return (
@@ -410,6 +412,30 @@ const App = () => {
         element={
           <ProtectedRoute allowedRoles={['cllUpdate']}>
             <UpdateCalifolink />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='ctlUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['ctlUpdate']}>
+            <UpdateTravel />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='cmsUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cmsUpdate']}>
+            <UpdateCMS />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='ctlUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['ctlUpdate']}>
+            <UpdateTravel />
           </ProtectedRoute>
         }
         />
