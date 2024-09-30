@@ -53,6 +53,8 @@ import UpdateCMS from './components/CMS/UpdateCMS'
 import UpdateCCS from './components/Container/UpdateCCS'
 import UpdateCSV from './components/CSV/UpdateCSV'
 import UpdateCWS from './components/Warehouse/UpdateCWS'
+import UpdateStarlink from './components/Starlink/UpdateStarlink'
+import UpdateCES from './components/CES/UpdateCES'
 
 const App = () => {
   return (
@@ -456,6 +458,23 @@ const App = () => {
         element={
           <ProtectedRoute allowedRoles={['cwsUpdate']}>
             <UpdateCWS />
+          </ProtectedRoute>
+        }
+        />
+        
+        <Route
+        path='cesUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cesUpdate']}>
+            <UpdateCES />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='stlUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['stlUpdate']}>
+            <UpdateStarlink />
           </ProtectedRoute>
         }
         />
