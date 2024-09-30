@@ -50,6 +50,11 @@ import UpdateMSTS from './components/MSTS/UpdateMSTS'
 import UpdateCalifolink from './components/CalifoLink/UpdateCalifolink'
 import UpdateTravel from './components/CTL/UpdateTravel'
 import UpdateCMS from './components/CMS/UpdateCMS'
+import UpdateCCS from './components/Container/UpdateCCS'
+import UpdateCSV from './components/CSV/UpdateCSV'
+import UpdateCWS from './components/Warehouse/UpdateCWS'
+import UpdateStarlink from './components/Starlink/UpdateStarlink'
+import UpdateCES from './components/CES/UpdateCES'
 
 const App = () => {
   return (
@@ -432,10 +437,44 @@ const App = () => {
         }
         />
         <Route
-        path='ctlUpdate'
+        path='ccsUpdate'
         element={
-          <ProtectedRoute allowedRoles={['ctlUpdate']}>
-            <UpdateTravel />
+          <ProtectedRoute allowedRoles={['ccsUpdate']}>
+            <UpdateCCS />
+          </ProtectedRoute>
+        }
+        />
+        
+        <Route
+        path='csvUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['csvUpdate']}>
+            <UpdateCSV />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='cwsUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cwsUpdate']}>
+            <UpdateCWS />
+          </ProtectedRoute>
+        }
+        />
+        
+        <Route
+        path='cesUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['cesUpdate']}>
+            <UpdateCES />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='stlUpdate'
+        element={
+          <ProtectedRoute allowedRoles={['stlUpdate']}>
+            <UpdateStarlink />
           </ProtectedRoute>
         }
         />
