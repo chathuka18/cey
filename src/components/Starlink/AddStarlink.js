@@ -68,7 +68,7 @@ const AddStarlink = () => {
                 {success && <p className="text-center text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <label className="block">
-                        <span className="block text-sm font-medium text-gray-700 mb-1">ID (STLyymm) e.g., STL2401:</span>
+                        <span className="block text-sm font-medium text-gray-700 mb-1">ID (STLyymmww) e.g., STL240101:</span>
                         <input
                             type="text"
                             name="id"

@@ -1,72 +1,109 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Function to check if the token is expired
+  const isTokenExpired = () => {
+    const tokenExpiry = localStorage.getItem('tokenExpiry');
+    if (tokenExpiry && new Date().getTime() > tokenExpiry) {
+      localStorage.removeItem('token');
+      localStorage.removeItem('tokenExpiry');
+      localStorage.removeItem('userRole');
+      localStorage.removeItem('userName');
+      localStorage.removeItem('userEmail');
+      return true; // Token is expired
+    }
+    return false; // Token is not expired
+  };
+
+  // Function to clear previous tokens
+  const clearPreviousToken = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('tokenExpiry');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+  };
+
+  // Check token expiry on component mount
+  useEffect(() => {
+    if (isTokenExpired()) {
+      console.log('Token has expired and was removed.');
+    }
+  }, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
     setIsLoading(true);
 
+    // Clear previous tokens before logging in
+    clearPreviousToken();
+
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, { email, password });
-      const { token, role, message, name } = response.data;
+      const { token, role, message, name, expiresIn, statusCode } = response.data;
 
-      if (response.data.statusCode === 200) {
+      if (statusCode === 200) {
+        const tokenExpiry = new Date().getTime() + expiresIn * 1000; // Set token expiration in ms
+
         localStorage.setItem('token', token);
         localStorage.setItem('userRole', role);
         localStorage.setItem('userName', name);
         localStorage.setItem('userEmail', email);
+        localStorage.setItem('tokenExpiry', tokenExpiry); // Store token expiry time
 
-        switch (role) {
-          case 'ADMIN': navigate('/admin'); break;
-          case 'CMS': navigate('/cms'); break;
-          case 'CTL': navigate('/ctl'); break;
-          case 'ONL': navigate('/onl'); break;
-          case 'CML': navigate('/cml'); break;
-          case 'MSTS': navigate('/msts'); break;
-          case 'CLL': navigate('/cll'); break;
-          case 'STL': navigate('/stl'); break;
-          case 'CCS': navigate('/ccs'); break;
-          case 'CSL': navigate('/csl'); break;
-          case 'MCM': navigate('/mcm'); break;
-          case 'CMA': navigate('/cma'); break;
-          case 'CSV': navigate('/csv'); break;
-          case 'CWS': navigate('/cws'); break;
-          case 'CES': navigate('/ces'); break;
-          case 'CAL': navigate('/cal'); break;
-          case 'CHE': navigate('/che'); break;
-          case 'NVOCC': navigate('/nvocc'); break;
-          case 'SUPER': navigate('/super'); break;
+        const roleRoutes = {
+          'ADMIN': '/admin',
+          'CMS': '/cms',
+          'CTL': '/ctl',
+          'ONL': '/onl',
+          'CML': '/cml',
+          'MSTS': '/msts',
+          'CLL': '/cll',
+          'STL': '/stl',
+          'CCS': '/ccs',
+          'CSL': '/csl',
+          'MCM': '/mcm',
+          'CMA': '/cma',
+          'CSV': '/csv',
+          'CWS': '/cws',
+          'CES': '/ces',
+          'CAL': '/cal',
+          'CHE': '/che',
+          'NVOCC': '/nvocc',
 
-          case 'cmsUpdate': navigate('/cmsUpdate'); break;
-          case 'ctlUpdate': navigate('/ctlUpdate'); break;
-          case 'onlUpdate': navigate('/onlUpdate'); break;
-          case 'cmlUpdate': navigate('/cmlUpdate'); break;
-          case 'mstsUpdate': navigate('/mstsUpdate'); break;
-          case 'cllUpdate': navigate('/cllUpdate'); break;
-          case 'stlUpdate': navigate('/stlUpdate'); break;
-          case 'ccsUpdate': navigate('/ccsUpdate'); break;
-          case 'cslUpdate': navigate('/cslUpdate'); break;
-          case 'mcmUpdate': navigate('/mcmUpdate'); break;
-          case 'cmaUpdate': navigate('/cmaUpdate'); break;
-          case 'csvUpdate': navigate('/csvUpdate'); break;
-          case 'cwsUpdate': navigate('/cwsUpdate'); break;
-          case 'cesUpdate': navigate('/cesUpdate'); break;
-          case 'calUpdate': navigate('/calUpdate'); break;
-          case 'cheUpdate': navigate('/cheUpdate'); break;
-          case 'nvoccUpdate': navigate('/nvoccUpdate'); break;
+          'SUPER': '/super',
 
-          
-          default: navigate('/');
-        }
+          'cmsUpdate': '/cmsUpdate',
+          'ctlUpdate': '/ctlUpdate',
+          'onlUpdate': '/onlUpdate',
+          'cmlUpdate': '/cmlUpdate',
+          'mstsUpdate': '/mstsUpdate',
+          'cllUpdate': '/cllUpdate',
+          'stlUpdate': '/stlUpdate',
+          'ccsUpdate': '/ccsUpdate',
+          'cslUpdate': '/cslUpdate',
+          'mcmUpdate': '/mcmUpdate',
+          'cmaUpdate': '/cmaUpdate',
+          'csvUpdate': '/csvUpdate',
+          'cwsUpdate': '/cwsUpdate',
+
+          'cesUpdate': '/cesUpdate',
+          'calUpdate': '/calUpdate',
+          'cheUpdate': '/cheUpdate',
+          'nvoccUpdate': '/nvoccUpdate',
+        };
+
+        const route = roleRoutes[role] || '/'; // Default to home if role is not found
+        navigate(route);
       } else {
         setError(message || 'Login failed. Please try again.');
       }
