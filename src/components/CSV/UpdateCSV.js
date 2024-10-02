@@ -18,7 +18,7 @@ const CSVList = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/oceaneeds`, { timeout: 10000 });
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/csv`, { timeout: 10000 });
       setCSV(response.data);
       setLoading(false);
     } catch (error) {
@@ -82,7 +82,7 @@ const CSVList = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
       <div className="w-full max-w-5xl bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">Oceaneeds Data</h2>
+        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">Cargoserv Data</h2>
         <div className="mb-6 flex justify-between">
           <button
             onClick={fetchCSV}
