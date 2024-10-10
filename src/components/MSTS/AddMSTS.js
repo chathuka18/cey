@@ -4,18 +4,22 @@ import axios from 'axios';
 const AddMSTS = () => {
     const [msts, setMSTS] = useState({
         id: '',
-        pti: '',
-        monitoring_days: '',
-        fleet: '',
-        owned_rent: '',
-        on_hire: '',
-        re_work: '',
+        no_of_pti: '',
+        no_of_monitoring_days: '',
+        no_of_reefer_repairs_pti: '',
+        reefer_renting_fleet: '',
+        onHire_MSTS: '',
+        outSource_reefers_onHire: '',
+        onHire_maldives: '',
+        no_of_reefer_repairs_renting: '',
+        rework_operations: '',
         survey: '',
-        reefer_spare: '',
-        vessel_spare: '',
-        reefer_repairs: '',
-        exports: '',
-        maldives: '',
+        no_of_spare_parts_supplies: '',
+        no_of_reefer_repairs_technical: '',
+        no_of_inspections_technical: '',
+        no_of_perishable_exports: '',
+        no_of_inspections_maldives: '',
+        no_of_repairs_maldives: '',
         date: '',
     });
 
@@ -35,18 +39,22 @@ const AddMSTS = () => {
             setError(null);
             setMSTS({
                 id: '',
-                pti: '',
-                monitoring_days: '',
-                fleet: '',
-                owned_rent: '',
-                on_hire: '',
-                re_work: '',
+                no_of_pti: '',
+                no_of_monitoring_days: '',
+                no_of_reefer_repairs_pti: '',
+                reefer_renting_fleet: '',
+                onHire_MSTS: '',
+                outSource_reefers_onHire: '',
+                onHire_maldives: '',
+                no_of_reefer_repairs_renting: '',
+                rework_operations: '',
                 survey: '',
-                reefer_spare: '',
-                vessel_spare: '',
-                reefer_repairs: '',
-                exports: '',
-                maldives: '',
+                no_of_spare_parts_supplies: '',
+                no_of_reefer_repairs_technical: '',
+                no_of_inspections_technical: '',
+                no_of_perishable_exports: '',
+                no_of_inspections_maldives: '',
+                no_of_repairs_maldives: '',
                 date: '',
             });
         } catch (error) {
@@ -61,155 +69,237 @@ const AddMSTS = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-            <div className="w-full max-w-2xl bg-white shadow-lg rounded-lg p-8">
-                <h2 className="text-2xl font-bold mb-6 text-center">Marine Survey & Technology Services</h2>
-                {error && <p className="text-red-500 mb-4">{error}</p>}
-                {success && <p className="text-green-500 mb-4">{success}</p>}
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">ID (MSTSyymmww) eg(MSTS240101):</label>
-                        <input
-                            type="text"
-                            name="id"
-                            value={msts.id}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-indigo-100 p-6">
+            <div className="w-full max-w-2xl bg-white shadow-2xl rounded-3xl p-8 border border-gray-200">
+                <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-600">Marine Survey & Technology Services</h2>
+                {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+                {success && <p className="text-green-500 mb-4 text-center">{success}</p>}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                        <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">ID (MSTSyymmww):</label>
+                            <input
+                                type="text"
+                                name="id"
+                                value={msts.id}
+                                onChange={handleChange}
+                                required
+                                className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">No. of PTI:</label>
-                        <input
-                            type="number"
-                            name="pti"
-                            value={msts.pti}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
+                    {/* PTI Section */}
+                    <div className='border-2 border-blue-500 rounded-lg p-4'>
+                        <h3 className="text-xl font-semibold mb-4 text-blue-500 ">PTI Department</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">No. of PTI:</label>
+                                <input
+                                    type="number"
+                                    name="no_of_pti"
+                                    value={msts.no_of_pti}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">No. of Monitoring Days:</label>
+                                <input
+                                    type="number"
+                                    name="no_of_monitoring_days"
+                                    value={msts.no_of_monitoring_days}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">No. of Reefer Repairs:</label>
+                                <input
+                                    type="number"
+                                    name="no_of_reefer_repairs_pti"
+                                    value={msts.no_of_reefer_repairs_pti}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">No. of Monitoring Days:</label>
-                        <input
-                            type="number"
-                            name="monitoring_days"
-                            value={msts.monitoring_days}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
+
+                    {/* Reefer Renting Section */}
+                    <div className='border-2 border-blue-500 rounded-lg p-4'>
+                        <h3 className="text-xl font-semibold mb-4 text-blue-500">Reefer Renting Department</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">Reefer Renting Fleet:</label>
+                                <input
+                                    type="number"
+                                    name="reefer_renting_fleet"
+                                    value={msts.reefer_renting_fleet}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">On Hire MSTS:</label>
+                                <input
+                                    type="number"
+                                    name="onHire_MSTS"
+                                    value={msts.onHire_MSTS}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">Outsource Reefer (On Hire):</label>
+                            <input
+                                type="number"
+                                name="outSource_reefers_onHire"
+                                value={msts.outSource_reefers_onHire}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">On Hire Reefer (Maldives):</label>
+                            <input
+                                type="number"
+                                name="onHire_maldives"
+                                value={msts.onHire_maldives}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">No. of Reefer Repairs/Supply:</label>
+                            <input
+                                type="number"
+                                name="no_of_reefer_repairs_renting"
+                                value={msts.no_of_reefer_repairs_renting}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">Reefer Renting Fleet:</label>
-                        <input
-                            type="number"
-                            name="fleet"
-                            value={msts.fleet}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
+
+                    {/* Operations Section */}
+                    <div className='border-2 border-blue-500 rounded-lg p-4'>
+                        <h3 className="text-xl font-semibold mb-4 text-blue-500">Operations Department</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">Rework Operations:</label>
+                                <input
+                                    type="number"
+                                    name="rework_operations"
+                                    value={msts.rework_operations}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label className="text-sm font-medium text-gray-700 mb-1">Survey:</label>
+                                <input
+                                    type="number"
+                                    name="survey"
+                                    value={msts.survey}
+                                    onChange={handleChange}
+                                    required
+                                    className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">On Hire Reefer (MSTS Owned):</label>
-                        <input
-                            type="number"
-                            name="owned_rent"
-                            value={msts.owned_rent}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
+
+                    {/* Technical Section */}
+                    <div className='border-2 border-blue-500 rounded-lg p-4'>
+                        <h3 className="text-xl font-semibold mb-4 text-blue-500">Technical Department</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">No. of Spare Part Supplies:</label>
+                            <input
+                                type="number"
+                                name="no_of_spare_parts_supplies"
+                                value={msts.no_of_spare_parts_supplies}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">No. of Reefer Repairs:</label>
+                            <input
+                                type="number"
+                                name="no_of_reefer_repairs_technical"
+                                value={msts.no_of_reefer_repairs_technical}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">No. of Inspections:</label>
+                            <input
+                                type="number"
+                                name="no_of_inspections_technical"
+                                value={msts.no_of_inspections_technical}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        </div>
                     </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">Outsource Reefer (On Hire):</label>
-                        <input
-                            type="number"
-                            name="on_hire"
-                            value={msts.on_hire}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">Re-work Operations (No. of Jobs):</label>
-                        <input
-                            type="number"
-                            name="re_work"
-                            value={msts.re_work}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">Survey (No. of Jobs):</label>
-                        <input
-                            type="number"
-                            name="survey"
-                            value={msts.survey}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">No. of Reefer Spare Part Supplies:</label>
-                        <input
-                            type="number"
-                            name="reefer_spare"
-                            value={msts.reefer_spare}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">No. of Vessel Spare Part Supplies:</label>
-                        <input
-                            type="number"
-                            name="vessel_spare"
-                            value={msts.vessel_spare}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">No. of Reefer Repairs:</label>
-                        <input
-                            type="number"
-                            name="reefer_repairs"
-                            value={msts.reefer_repairs}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+
                     <div className="flex flex-col">
                         <label className="text-sm font-medium text-gray-700 mb-1">No. of Perishable Exports:</label>
                         <input
                             type="number"
-                            name="exports"
-                            value={msts.exports}
+                            name="no_of_perishable_exports"
+                            value={msts.no_of_perishable_exports}
                             onChange={handleChange}
                             required
                             className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">Maldives:</label>
-                        <input
-                            type="number"
-                            name="maldives"
-                            value={msts.maldives}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
+
+                    {/* Maldives Section */}
+                    <div className='border-2 border-blue-500 rounded-lg p-4'>
+                        <h3 className="text-xl font-semibold mb-4 text-blue-500">Maldives</h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">No. of Inspections (Maldives):</label>
+                            <input
+                                type="number"
+                                name="no_of_inspections_maldives"
+                                value={msts.no_of_inspections_maldives}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label className="text-sm font-medium text-gray-700 mb-1">No. of Repairs (Maldives):</label>
+                            <input
+                                type="number"
+                                name="no_of_repairs_maldives"
+                                value={msts.no_of_repairs_maldives}
+                                onChange={handleChange}
+                                required
+                                className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            />
+                        </div>
+                        </div>
                     </div>
+
                     <div className="flex flex-col">
                         <label className="text-sm font-medium text-gray-700 mb-1">Date:</label>
                         <input
@@ -221,9 +311,12 @@ const AddMSTS = () => {
                             className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
+
+
+                    {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                        className="w-full py-3 mt-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg shadow-lg hover:shadow-xl hover:bg-gradient-to-l transform hover:scale-105 transition-transform duration-300"
                     >
                         Add MSTS
                     </button>

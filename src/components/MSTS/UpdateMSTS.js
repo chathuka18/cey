@@ -5,6 +5,8 @@ const MSTSList = () => {
   const [msts, setMSTS] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sortField, setSortField] = useState('');
+  const [sortDirection, setSortDirection] = useState('asc');
   const [updateMode, setUpdateMode] = useState(false);
   const [updateData, setUpdateData] = useState(null);
 
@@ -14,27 +16,38 @@ const MSTSList = () => {
 
   const fetchMSTS = async () => {
     setLoading(true);
+    setError(null);
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/msts`);
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/msts`, { timeout: 10000 });
       setMSTS(response.data);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
-      setError('Failed to fetch data. Please try again later.');
+      if (error.response) {
+        setError(`Failed to fetch data: ${error.response.status} ${error.response.statusText}`);
+      } else if (error.request) {
+        setError('Failed to fetch data: No response received from server');
+      } else {
+        setError(`Failed to fetch data: ${error.message}`);
+      }
       setLoading(false);
     }
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this entry?')) {
-      try {
-        await axios.delete(`${process.env.REACT_APP_API_URL}/api/msts/${id}`);
-        fetchMSTS();
-      } catch (error) {
-        console.error('Error deleting data:', error);
-        setError('Failed to delete entry. Please try again.');
-      }
-    }
+  const handleSort = (field) => {
+    const isAsc = sortField === field && sortDirection === 'asc';
+    setSortField(field);
+    setSortDirection(isAsc ? 'desc' : 'asc');
+    const sortedData = [...msts].sort((a, b) => {
+      if (a[field] < b[field]) return isAsc ? -1 : 1;
+      if (a[field] > b[field]) return isAsc ? 1 : -1;
+      return 0;
+    });
+    setMSTS(sortedData);
+  };
+
+  const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString();
   };
 
   const handleUpdate = () => {
@@ -63,32 +76,20 @@ const MSTSList = () => {
     }
   };
 
-  
-  const fieldLabels = {
-    id: 'ID',
-    pti: 'No. of PTI',
-    monitoring_days: 'No. of Monitoring Days',
-    fleet: 'Reefer Renting Fleet',
-    owned_rent: 'On Hire Reefer – MSTS Owned',
-    on_hire: 'Outsource Reefer – On Hire',
-    re_work: 'Re-work Operations (No. of Jobs)',
-    survey: 'Survey (No. of Jobs)',
-    reefer_spare: 'No. of Reefer Spare Part Supplies',
-    vessel_spare: 'No. of Vessel Spare Part Supplies',
-    reefer_repairs: 'No. of Reefer Repairs',
-    exports: 'No. of Perishable Exports',
-    maldives: 'Maldives',
-    date: 'Date'
-  };
-
-  if (loading) return <div className="text-center py-4">Loading...</div>;
-  if (error) return <div className="text-red-500 text-center py-4">{error}</div>;
+  if (loading) return <div className="text-center text-gray-500">Loading...</div>;
+  if (error) return <div className="text-center text-red-500">Error: {error}</div>;
 
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gray-100 p-6">
-      <div className="w-full max-w-6xl bg-white shadow-lg rounded-lg p-8">
-        <h2 className="text-2xl font-bold mb-6 text-center">MSTS Data</h2>
-        <div className="mb-4 flex justify-between">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
+      <div className="w-full max-w-5xl bg-white shadow-md rounded-lg p-6">
+        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">MSTS Data</h2>
+        <div className="mb-6 flex justify-between">
+          <button
+            onClick={fetchMSTS}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md shadow hover:bg-blue-700"
+          >
+            Refresh
+          </button>
           <button
             onClick={handleUpdate}
             className="px-4 py-2 bg-green-600 text-white rounded-md shadow hover:bg-green-700"
@@ -97,12 +98,12 @@ const MSTSList = () => {
             Update Latest Record
           </button>
         </div>
-        {updateMode && (
+        {updateMode ? (
           <div className="mb-6 p-4 border border-gray-200 rounded-lg shadow-sm">
             <h3 className="text-xl font-semibold mb-3">Update Latest Record</h3>
             {Object.keys(updateData).map((key) => (
               <div key={key} className="mb-3">
-                <label className="block text-sm font-medium text-gray-700">{fieldLabels[key]}</label>
+                <label className="block text-sm font-medium text-gray-700">{key.replace(/_/g, ' ')}</label>
                 <input
                   type={key === 'date' ? 'date' : key === 'id' ? 'text' : 'number'}
                   name={key}
@@ -129,60 +130,50 @@ const MSTSList = () => {
               </button>
             </div>
           </div>
-        )}
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto border-collapse">
-            <thead>
-              <tr className="bg-gray-200 text-left">
-                <th className="px-4 py-2 border-b">ID</th>
-                <th className="px-4 py-2 border-b">No. of. PTI</th>
-                <th className="px-4 py-2 border-b">No. of. Monitoring Days</th>
-                <th className="px-4 py-2 border-b">Reefer Renting Fleet</th>
-                <th className="px-4 py-2 border-b">On Hire Reefer – MSTS Owned</th>
-                <th className="px-4 py-2 border-b">Out Source Reefer – On Hire</th>
-                <th className="px-4 py-2 border-b">Re-work Operations (No. of. Jobs): </th>
-                <th className="px-4 py-2 border-b">Survey (No. of. Jobs): </th>
-                <th className="px-4 py-2 border-b">No. of Reefer Spare part supplies:</th>
-                <th className="px-4 py-2 border-b">No. of Vessel Spare part supplies:</th>
-                <th className="px-4 py-2 border-b">No. of. Reefer Repairs: </th>
-                <th className="px-4 py-2 border-b">Exports</th>
-                <th className="px-4 py-2 border-b">Maldives</th>
-                <th className="px-4 py-2 border-b">Date</th>
-                <th className="px-4 py-2 border-b">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {msts.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-100">
-                  <td className="px-4 py-2 border-b">{item.id}</td>
-                  <td className="px-4 py-2 border-b">{item.pti}</td>
-                  <td className="px-4 py-2 border-b">{item.monitoring_days}</td>
-                  <td className="px-4 py-2 border-b">{item.fleet}</td>
-                  <td className="px-4 py-2 border-b">{item.owned_rent}</td>
-                  <td className="px-4 py-2 border-b">{item.on_hire}</td>
-                  <td className="px-4 py-2 border-b">{item.re_work}</td>
-                  <td className="px-4 py-2 border-b">{item.survey}</td>
-                  <td className="px-4 py-2 border-b">{item.reefer_spare}</td>
-                  <td className="px-4 py-2 border-b">{item.vessel_spare}</td>
-                  <td className="px-4 py-2 border-b">{item.reefer_repairs}</td>
-                  <td className="px-4 py-2 border-b">{item.exports}</td>
-                  <td className="px-4 py-2 border-b">{item.maldives}</td>
-                  <td className="px-4 py-2 border-b">{item.date}</td>
-                  <td className="px-4 py-2 border-b">
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      className="text-red-500 hover:text-red-700"
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+              <thead className="bg-gray-100">
+                <tr>
+                  {['ID', 'No. of PTI', 'No. of Monitoring Days', 'No. of Reefer Repairs', 'Reefer Renting Fleet', 'On Hire MSTS', 'Outsource Reefer (On Hire)', 'On Hire Reefer (Maldives)', 'No. of Reefer Repairs/Supply', 'Rework Operations', 'Survey', 'No. of Spare Part Supplies', 'No. of Reefer Repairs', 'No. of Inspections', 'No. of Perishable Exports', 'No. of Inspections (Maldives)', 'No. of Repairs (Maldives)', 'Date'].map((field) => (
+                    <th
+                      key={field}
+                      className="px-4 py-2 cursor-pointer text-left text-gray-700 hover:text-gray-900"
+                      onClick={() => handleSort(field)}
                     >
-                      Delete
-                    </button>
-                  </td>
+                      {field.replace(/_/g, ' ')}
+                      {sortField === field && (sortDirection === 'asc' ? ' ▲' : ' ▼')}
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        
-        {/* Table Section */}
+              </thead>
+              <tbody>
+                {msts.map((item) => (
+                  <tr key={item.id} className="border-b hover:bg-gray-100">
+                    <td className="px-4 py-2">{item.id}</td>
+                    <td className="px-4 py-2">{item.no_of_pti}</td>
+                    <td className="px-4 py-2">{item.no_of_monitoring_days}</td>
+                    <td className="px-4 py-2">{item.no_of_reefer_repairs_pti}</td>
+                    <td className="px-4 py-2">{item.reefer_renting_fleet}</td>
+                    <td className="px-4 py-2">{item.onHire_MSTS}</td>
+                    <td className="px-4 py-2">{item.outSource_reefers_onHire}</td>
+                    <td className="px-4 py-2">{item.onHire_maldives}</td>
+                    <td className="px-4 py-2">{item.no_of_reefer_repairs_renting}</td>
+                    <td className="px-4 py-2">{item.rework_operations}</td>
+                    <td className="px-4 py-2">{item.survey}</td>
+                    <td className="px-4 py-2">{item.no_of_spare_parts_supplies}</td>
+                    <td className="px-4 py-2">{item.no_of_reefer_repairs_technical}</td>
+                    <td className="px-4 py-2">{item.no_of_inspections_technical}</td>
+                    <td className="px-4 py-2">{item.no_of_perishable_exports}</td>
+                    <td className="px-4 py-2">{item.no_of_inspections_maldives}</td>
+                    <td className="px-4 py-2">{item.no_of_repairs_maldives}</td>
+                    <td className="px-4 py-2">{formatDate(item.date)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
