@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddCWS = () => {
     const [cws, setCWS] = useState({
-        id: '',
         wh01_capacity: '',
         wh01_utilization: '',
         wh01_utilization_percentage: '',
@@ -29,7 +28,6 @@ const AddCWS = () => {
             setSuccess('Warehouse added successfully!');
             setError(null);
             setCWS({
-                id: '',
                 wh01_capacity: '',
                 wh01_utilization: '',
                 wh01_utilization_percentage: '',
@@ -58,14 +56,14 @@ const AddCWS = () => {
                 {success && <p className="text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">ID (CWSyymmww) eg(CWS240101):</label>
+                        <label className="block text-sm font-medium text-gray-700">Date:</label>
                         <input 
-                            type="text" 
-                            name="id" 
-                            value={cws.id} 
+                            type="date" 
+                            name="date" 
+                            value={cws.date} 
                             onChange={handleChange} 
                             required 
-                            className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
                     <div>
@@ -152,17 +150,7 @@ const AddCWS = () => {
                             className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700">Date:</label>
-                        <input 
-                            type="date" 
-                            name="date" 
-                            value={cws.date} 
-                            onChange={handleChange} 
-                            required 
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+                    
                     <button 
                         type="submit" 
                         className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"

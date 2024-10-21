@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddCSV = () => {
   const [csv, setCsv] = useState({
-    id: '',
     sea_freight: '',
     air_freight: '',
     logistics_job: '',
@@ -22,7 +21,6 @@ const AddCSV = () => {
     e.preventDefault();
     try {
       const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/csv`, {
-        id: csv.id,
         sea_freight: csv.sea_freight,
         air_freight: csv.air_freight,
         logistics_job: csv.logistics_job,
@@ -31,7 +29,6 @@ const AddCSV = () => {
       setSuccess('CSV added successfully!');
       setError(null);
       setCsv({
-        id: '',
         sea_freight: '',
         air_freight: '',
         logistics_job: '',
@@ -56,17 +53,8 @@ const AddCSV = () => {
         {success && <p className="text-green-500 mb-4">{success}</p>}
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              ID (CSVyymmww) eg(CSV240101):
-            </label>
-            <input
-              type="text"
-              name="id"
-              value={csv.id}
-              onChange={handleChange}
-              required
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-            />
+              <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+              <input type="date" name="date" value={csv.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -107,10 +95,6 @@ const AddCSV = () => {
               className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             />
           </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input type="date" name="date" value={csv.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-                    </div>
           <button
             type="submit"
             className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddTravel = () => {
     const [travel, setTravel] = useState({
-        id: '',
         ticketsSeafarer: '',
         ticketsFitCorporate: '',
         outbound: '',
@@ -25,7 +24,6 @@ const AddTravel = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/travel`, {
-                id: travel.id,
                 tickets_Seafarer: travel.ticketsSeafarer,
                 tickets_FIT_Corporate: travel.ticketsFitCorporate,
                 outbound: travel.outbound,
@@ -37,7 +35,6 @@ const AddTravel = () => {
             setSuccess('Travel added successfully!');
             setError(null);
             setTravel({
-                id: '',
                 ticketsSeafarer: '',
                 ticketsFitCorporate: '',
                 outbound: '',
@@ -65,11 +62,11 @@ const AddTravel = () => {
                 {success && <p className="text-green-500 text-center mb-4">{success}</p>}
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">ID (CTLyymmww) eg(CTL240101):</label>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
                         <input 
-                            type="text" 
-                            name="id" 
-                            value={travel.id} 
+                            type="date" 
+                            name="date" 
+                            value={travel.date} 
                             onChange={handleChange} 
                             required 
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" 
@@ -141,17 +138,7 @@ const AddTravel = () => {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" 
                         />
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input 
-                            type="date" 
-                            name="date" 
-                            value={travel.date} 
-                            onChange={handleChange} 
-                            required 
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" 
-                        />
-                    </div>
+                    
                     <button 
                         type="submit" 
                         className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"

@@ -4,7 +4,6 @@ import calImg from '../../img/cal.webp';
 
 const AddCAL = () => {
     const [cal, setCAL] = useState({
-        id: '',
         crew_change: '',
         casual_caller_ops: '',
         date: '',
@@ -22,7 +21,6 @@ const AddCAL = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/cal`, {
-                id: cal.id,
                 crew_change: cal.crew_change,
                 casual_caller_ops: cal.casual_caller_ops,
                 date: cal.date
@@ -30,7 +28,6 @@ const AddCAL = () => {
             setSuccess('CAL added successfully!');
             setError(null);
             setCAL({
-                id: '',
                 crew_change: '',
                 casual_caller_ops: '',
                 date: ''
@@ -53,9 +50,10 @@ const AddCAL = () => {
                 {error && <p className="text-red-500 text-center mb-4">{error}</p>}
                 {success && <p className="text-green-500 text-center mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
+                    
                     <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">ID (CALyymmww) eg(CAL240101):</label>
-                        <input type="text" name="id" value={cal.id} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+                        <input type="date" name="date" value={cal.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Crew Change Total:</label>
@@ -64,10 +62,6 @@ const AddCAL = () => {
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Casual Caller Ops:</label>
                         <input type="number" name="casual_caller_ops" value={cal.casual_caller_ops} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input type="date" name="date" value={cal.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <button type="submit" className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-300">Add CAL</button>
                 </form>

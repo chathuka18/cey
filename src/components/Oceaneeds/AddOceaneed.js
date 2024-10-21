@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddOceaneed = () => {
     const [formData, setFormData] = useState({
-        id: '',
         no_of_operations: '',
         no_of_quotations: '',
         no_of_confirmed_jobs: '',
@@ -30,7 +29,6 @@ const AddOceaneed = () => {
             });
             setMessage('Oceaneeds data submitted successfully!');
             setFormData({
-                id: '',
                 no_of_operations: '',
                 no_of_quotations: '',
                 no_of_confirmed_jobs: '',
@@ -54,14 +52,14 @@ const AddOceaneed = () => {
                 <h2 className="text-2xl font-bold mb-6 text-center">Oceaneeds Data Entry</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
-                        <label htmlFor="id" className="block text-sm font-medium text-gray-700 mb-1">
-                            ID (ONLyymmww) eg(ONL240101):
+                        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+                            Date:
                         </label>
                         <input 
-                            type="text" 
-                            id="id" 
-                            name="id" 
-                            value={formData.id} 
+                            type="date" 
+                            id="date" 
+                            name="date" 
+                            value={formData.date} 
                             onChange={handleChange} 
                             required 
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
@@ -137,20 +135,7 @@ const AddOceaneed = () => {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
-                            Date:
-                        </label>
-                        <input 
-                            type="date" 
-                            id="date" 
-                            name="date" 
-                            value={formData.date} 
-                            onChange={handleChange} 
-                            required 
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+                    
                     <button 
                         type="submit" 
                         className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"

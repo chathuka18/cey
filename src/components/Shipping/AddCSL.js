@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddCSL = () => {
     const [csl, setCsl] = useState({
-        id: '',
         crew_on_board: '',
         new_principals: '',
         income: '',
@@ -23,7 +22,6 @@ const AddCSL = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/csl`, {
-                id: csl.id,
                 crew_on_board: csl.crew_on_board,
                 new_principals: csl.new_principals,
                 income: csl.income,
@@ -33,7 +31,6 @@ const AddCSL = () => {
             setSuccess('CSL added successfully!');
             setError(null);
             setCsl({
-                id: '',
                 crew_on_board: '',
                 new_principals: '',
                 income: '',
@@ -58,17 +55,17 @@ const AddCSL = () => {
                 {error && <p className="text-center text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-center text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <label className="block">
-                        <span className="block text-sm font-medium text-gray-700 mb-1">ID (CSLyymmww) e.g., CSL240101:</span>
+                    <div className="block">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
                         <input
-                            type="text"
-                            name="id"
-                            value={csl.id}
+                            type="date"
+                            name="date"
+                            value={csl.date}
                             onChange={handleChange}
                             required
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
-                    </label>
+                    </div>
                     <label className="block">
                         <span className="block text-sm font-medium text-gray-700 mb-1">Crew On Board:</span>
                         <input
@@ -113,17 +110,7 @@ const AddCSL = () => {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </label>
-                    <div className="block">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input
-                            type="date"
-                            name="date"
-                            value={csl.date}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+                    
                     <button
                         type="submit"
                         className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"

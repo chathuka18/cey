@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddCCS = () => {
     const [ccs, setCcs] = useState({
-        id: '',
         gate_movement: '',
         storage_laden: '',
         storage_empty: '',
@@ -27,7 +26,6 @@ const AddCCS = () => {
             setSuccess('CCS added successfully!');
             setError(null);
             setCcs({
-                id: '',
                 gate_movement: '',
                 storage_laden: '',
                 storage_empty: '',
@@ -53,9 +51,9 @@ const AddCCS = () => {
                 {error && <p className="text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">ID (CCSyymmww) e.g., (CCS240101):</label>
-                        <input type="text" name="id" value={ccs.id} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+                     <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+                        <input type="date" name="date" value={ccs.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">Average Gate Movement (Per Day):</label>
@@ -77,10 +75,7 @@ const AddCCS = () => {
                         <label className="block text-sm font-medium text-gray-700 mb-1">Repairs (USD):</label>
                         <input type="number" name="repairs_usd" value={ccs.repairs_usd} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input type="date" name="date" value={ccs.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-                    </div>
+                   
                     <button type="submit" className="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         Add CCS
                     </button>
