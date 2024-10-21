@@ -4,7 +4,6 @@ import cesImg from '../../img/ces.jpeg';
 
 const AddCES = () => {
     const [ces, setCES] = useState({
-        id: '',
         cdl_dry_docking: '',
         no_of_vessels: '',
         no_of_jobs: '',
@@ -24,7 +23,6 @@ const AddCES = () => {
         const currentDate = new Date().toISOString().split('T')[0];
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/ces`, {
-                id: ces.id,
                 cdl_dry_docking: ces.cdl_dry_docking,
                 no_of_vessels: ces.no_of_vessels,
                 no_of_jobs: ces.no_of_jobs,
@@ -33,7 +31,6 @@ const AddCES = () => {
             setSuccess('CES added successfully!');
             setError(null);
             setCES({
-                id: '',
                 cdl_dry_docking: '',
                 no_of_vessels: '',
                 no_of_jobs: '',
@@ -57,17 +54,10 @@ const AddCES = () => {
                 {error && <p className="text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <label className="block">
-                        <span className="text-gray-700">ID (CESyymmww) eg(CES240101):</span>
-                        <input 
-                            type="text" 
-                            name="id" 
-                            value={ces.id} 
-                            onChange={handleChange} 
-                            required 
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-opacity-50"
-                        />
-                    </label>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+                        <input type="date" name="date" value={ces.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
                     <label className="block">
                         <span className="text-gray-700">CDL Dry Docking:</span>
                         <input 
@@ -101,10 +91,6 @@ const AddCES = () => {
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-opacity-50"
                         />
                     </label>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input type="date" name="date" value={ces.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
-                    </div>
                     <button 
                         type="submit" 
                         className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"

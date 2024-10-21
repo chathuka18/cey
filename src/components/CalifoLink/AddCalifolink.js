@@ -4,7 +4,6 @@ import calImg from '../../img/nvocc.jpg';
 
 const AddCalifolink = () => {
     const [califolink, setCalifolink] = useState({
-        id: '',
         container_fleet: '',
         container_onhire: '',
         untilzation_container: '',
@@ -39,7 +38,6 @@ const AddCalifolink = () => {
             setSuccess('Califolink added successfully!');
             setError(null);
             setCalifolink({
-                id: '',
                 container_fleet: '',
                 container_onhire: '',
                 untilzation_container: '',
@@ -74,17 +72,11 @@ const AddCalifolink = () => {
                 {success && <p className="text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="space-y-2">
-                        <label className="block text-gray-700 font-medium">
-                            ID (CLLyymmww) eg(CLL240101):
-                            <input
-                                type="text"
-                                name="id"
-                                value={califolink.id}
-                                onChange={handleChange}
-                                required
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
-                            />
-                        </label>
+                        
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
+                        <input type="date" name="date" value={califolink.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
+                    </div>
                         <label className="block text-gray-700 font-medium">
                             Container Renting: Fleet:
                             <input
@@ -228,10 +220,6 @@ const AddCalifolink = () => {
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
                             />
                         </label>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input type="date" name="date" value={califolink.date} onChange={handleChange} required className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" />
                     </div>
                     <button
                         type="submit"

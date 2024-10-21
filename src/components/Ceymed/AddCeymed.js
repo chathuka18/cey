@@ -4,7 +4,6 @@ import cheImg from '../../img/ceymed.jpg';
 
 const AddCeymed = () => {
     const [formData, setFormData] = useState({
-        id: '',
         no_of_reports: '',
         no_of_chanelling_patients: '',
         no_of_consultant_visited: '',
@@ -35,7 +34,6 @@ const AddCeymed = () => {
             });
             setMessage('Ceymed data submitted successfully!');
             setFormData({
-                id: '',
                 no_of_reports: '',
                 no_of_chanelling_patients: '',
                 no_of_consultant_visited: '',
@@ -62,7 +60,8 @@ const AddCeymed = () => {
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Ceymed Healthcare Services</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">
                     {[
-                        { label: 'ID (CHEyymmww) eg(CHE240101):', name: 'id', type: 'text' },
+                        
+                        { label: 'Date:', name: 'date', type: 'date' },
                         { label: 'Number of Reports:', name: 'no_of_reports', type: 'number' },
                         { label: 'Number of Channelling Patients:', name: 'no_of_chanelling_patients', type: 'number' },
                         { label: 'Number of Consultants Visited:', name: 'no_of_consultant_visited', type: 'number' },
@@ -70,8 +69,7 @@ const AddCeymed = () => {
                         { label: 'Number of Prescriptions:', name: 'no_of_prescriptions', type: 'number' },
                         { label: 'Number of OPD:', name: 'no_of_OPD', type: 'number' },
                         { label: 'Number of ETU:', name: 'no_of_ETU', type: 'number' },
-                        { label: 'Number of Contribution Center:', name: 'no_of_contribution_center', type: 'number' },
-                        { label: 'Date:', name: 'date', type: 'date' }
+                        { label: 'Number of Contribution Center:', name: 'no_of_contribution_center', type: 'number' }
                     ].map(({ label, name, type }) => (
                         <div key={name} className="form-group">
                             <label htmlFor={name} className="block text-gray-700 font-medium mb-1">{label}</label>

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddStarlink = () => {
     const [starlink, setStarlink] = useState({
-        id: '',
         full_rigging: '',
         polylining: '',
         fumigation: '',
@@ -26,7 +25,6 @@ const AddStarlink = () => {
         e.preventDefault();
         try {
             const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/starlink`, {
-                id: starlink.id,
                 full_rigging: starlink.full_rigging,
                 polylining: starlink.polylining,
                 fumigation: starlink.fumigation,
@@ -39,7 +37,6 @@ const AddStarlink = () => {
             setSuccess('Starlink added successfully!');
             setError(null);
             setStarlink({
-                id: '',
                 full_rigging: '',
                 polylining: '',
                 fumigation: '',
@@ -67,17 +64,17 @@ const AddStarlink = () => {
                 {error && <p className="text-center text-red-500 mb-4">{error}</p>}
                 {success && <p className="text-center text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
-                    <label className="block">
-                        <span className="block text-sm font-medium text-gray-700 mb-1">ID (STLyymmww) e.g., STL240101:</span>
+                    <div className="block">
+                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
                         <input
-                            type="text"
-                            name="id"
-                            value={starlink.id}
+                            type="date"
+                            name="date"
+                            value={starlink.date}
                             onChange={handleChange}
                             required
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
-                    </label>
+                    </div>
                     <label className="block">
                         <span className="block text-sm font-medium text-gray-700 mb-1">Full Rigging:</span>
                         <input
@@ -162,17 +159,7 @@ const AddStarlink = () => {
                             className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
                         />
                     </label>
-                    <div className="block">
-                        <label className="block text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input
-                            type="date"
-                            name="date"
-                            value={starlink.date}
-                            onChange={handleChange}
-                            required
-                            className="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+                    
                     <button
                         type="submit"
                         className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"

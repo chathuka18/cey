@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddCMS = () => {
     const [cms, setCms] = useState({
-        id: '',
         foreign_hires: '',
         local: '',
         caller_ops: '',
@@ -27,7 +26,6 @@ const AddCMS = () => {
             setSuccess('CMS added successfully!');
             setError(null);
             setCms({
-                id: '',
                 foreign_hires: '',
                 local: '',
                 caller_ops: '',
@@ -54,11 +52,11 @@ const AddCMS = () => {
                 {success && <p className="text-green-500 mb-4">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="form-group">
-                        <label className="block text-sm font-medium text-gray-700">ID (CMSyymmww) eg(CMS240101):</label>
+                        <label className="block text-sm font-medium text-gray-700">Date:</label>
                         <input
-                            type="text"
-                            name="id"
-                            value={cms.id}
+                            type="date"
+                            name="date"
+                            value={cms.date}
                             onChange={handleChange}
                             required
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
@@ -119,17 +117,7 @@ const AddCMS = () => {
                             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
-                    <div className="form-group">
-                        <label className="block text-sm font-medium text-gray-700">Date:</label>
-                        <input
-                            type="date"
-                            name="date"
-                            value={cms.date}
-                            onChange={handleChange}
-                            required
-                            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+                    
                     <button
                         type="submit"
                         className="w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow-sm hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
