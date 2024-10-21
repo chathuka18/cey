@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const AddMSTS = () => {
     const [msts, setMSTS] = useState({
-        id: '',
         no_of_pti: '',
         no_of_monitoring_days: '',
         no_of_reefer_repairs_pti: '',
@@ -38,7 +37,6 @@ const AddMSTS = () => {
             setSuccess('MSTS added successfully!');
             setError(null);
             setMSTS({
-                id: '',
                 no_of_pti: '',
                 no_of_monitoring_days: '',
                 no_of_reefer_repairs_pti: '',
@@ -77,16 +75,16 @@ const AddMSTS = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                         <div className="flex flex-col">
-                            <label className="text-sm font-medium text-gray-700 mb-1">ID (MSTSyymmww):</label>
-                            <input
-                                type="text"
-                                name="id"
-                                value={msts.id}
-                                onChange={handleChange}
-                                required
-                                className="p-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                            />
-                        </div>
+                        <label className="text-sm font-medium text-gray-700 mb-1">Date:</label>
+                        <input
+                            type="date"
+                            name="date"
+                            value={msts.date}
+                            onChange={handleChange}
+                            required
+                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                        />
+                    </div>
                     </div>
                     {/* PTI Section */}
                     <div className='border-2 border-blue-500 rounded-lg p-4'>
@@ -300,17 +298,7 @@ const AddMSTS = () => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium text-gray-700 mb-1">Date:</label>
-                        <input
-                            type="date"
-                            name="date"
-                            value={msts.date}
-                            onChange={handleChange}
-                            required
-                            className="p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-                        />
-                    </div>
+                    
 
 
                     {/* Submit Button */}
