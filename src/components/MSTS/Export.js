@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddMSTS = () => {
+const Export = () => {
     const [msts, setMSTS] = useState({
         no_of_perishable_exports: '',
         no_of_inspections_maldives: '',
