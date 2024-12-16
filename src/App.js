@@ -55,6 +55,7 @@ import UpdateCSV from './components/CSV/UpdateCSV'
 import UpdateCWS from './components/Warehouse/UpdateCWS'
 import UpdateStarlink from './components/Starlink/UpdateStarlink'
 import UpdateCES from './components/CES/UpdateCES'
+import Operations from './components/MSTS/Operations'
 
 const App = () => {
   return (
@@ -401,6 +402,48 @@ const App = () => {
         element={
           <ProtectedRoute allowedRoles={['cslUpdate']}>
             <UpdateCSL />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='operations'
+        element={
+          <ProtectedRoute allowedRoles={['OPERATIONS']}>
+            <Operations />
+          </ProtectedRoute>
+        }
+        />
+
+        
+        <Route
+        path='pti'
+        element={
+          <ProtectedRoute allowedRoles={['PTI']}>
+            <UpdateMSTS />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='reefer'
+        element={
+          <ProtectedRoute allowedRoles={['REEFER']}>
+            <UpdateMSTS />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='technical'
+        element={
+          <ProtectedRoute allowedRoles={['TECHNICAL']}>
+            <UpdateMSTS />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='export'
+        element={
+          <ProtectedRoute allowedRoles={['EXPORT']}>
+            <UpdateMSTS />
           </ProtectedRoute>
         }
         />
