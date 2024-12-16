@@ -56,6 +56,11 @@ import UpdateCWS from './components/Warehouse/UpdateCWS'
 import UpdateStarlink from './components/Starlink/UpdateStarlink'
 import UpdateCES from './components/CES/UpdateCES'
 import Operations from './components/MSTS/Operations'
+import PTI from './components/MSTS/PTI'
+import Reefer from './components/MSTS/Reefer'
+import Technical from './components/MSTS/Technical'
+import Export from './components/MSTS/Export'
+
 
 const App = () => {
   return (
@@ -419,7 +424,7 @@ const App = () => {
         path='pti'
         element={
           <ProtectedRoute allowedRoles={['PTI']}>
-            <UpdateMSTS />
+            <PTI />
           </ProtectedRoute>
         }
         />
@@ -427,7 +432,7 @@ const App = () => {
         path='reefer'
         element={
           <ProtectedRoute allowedRoles={['REEFER']}>
-            <UpdateMSTS />
+            <Reefer />
           </ProtectedRoute>
         }
         />
@@ -435,7 +440,7 @@ const App = () => {
         path='technical'
         element={
           <ProtectedRoute allowedRoles={['TECHNICAL']}>
-            <UpdateMSTS />
+            <Technical />
           </ProtectedRoute>
         }
         />
@@ -443,7 +448,7 @@ const App = () => {
         path='export'
         element={
           <ProtectedRoute allowedRoles={['EXPORT']}>
-            <UpdateMSTS />
+            <Export />
           </ProtectedRoute>
         }
         />
