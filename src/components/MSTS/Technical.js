@@ -20,7 +20,7 @@ const Technical = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post(`${process.env.REACT_APP_API_URL}/api/msts`, msts);
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/msts-technical`, msts);
             setSuccess('MSTS added successfully!');
             setError(null);
             setMSTS({
