@@ -66,7 +66,6 @@ const Login = () => {
           'CTL': '/ctl',
           'ONL': '/onl',
           'CML': '/cml',
-          'MSTS': '/msts',
           'CLL': '/cll',
           'STL': '/stl',
           'CCS': '/ccs',
@@ -79,6 +78,12 @@ const Login = () => {
           'CAL': '/cal',
           'CHE': '/che',
           'NVOCC': '/nvocc',
+          
+          'OPERATIONS': '/operations',
+          'PTI': '/pti',
+          'REEFER': '/reefer',
+          'TECHNICAL': '/technical',
+          'EXPORT': '/export',
 
           'SUPER': '/super',
 

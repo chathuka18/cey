@@ -13,7 +13,6 @@ function Register() {
   { value: 'CES', label: 'Ceyline Engienering' },
   { value: 'CLL', label: 'Califolink' },
   { value: 'STL', label: 'Starlink One' },
-  { value: 'MSTS', label: 'MSTS' },
   { value: 'CCS', label: 'Cey Container' },
   { value: 'CWS', label: 'Ceyline Warehouse' },
   { value: 'CSV', label: 'Cargo Server' },
@@ -23,6 +22,13 @@ function Register() {
   { value: 'CTL', label: 'Ceyline Travels' },
   { value: 'CHE', label: 'Ceymed Healthcare Services' },
   { value: 'SUPER', label: 'S Admin' },
+
+  
+  { value: 'OPERATIONS', label: 'MSTS-Operations' },
+  { value: 'PTI', label: 'MSTS-PTI' },
+  { value: 'REEFER', label: 'MSTS-Reefer' },
+  { value: 'TECHNICAL', label: 'MSTS-Technical' },
+  { value: 'EXPORT', label: 'MSTS-Export' },
 
   { value: 'onlUpdate', label: 'Oceaneeds Update' },
   { value: 'cmsUpdate', label: 'CMS Update' },
