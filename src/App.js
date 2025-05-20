@@ -60,6 +60,7 @@ import PTI from './components/MSTS/PTI'
 import Reefer from './components/MSTS/Reefer'
 import Technical from './components/MSTS/Technical'
 import Export from './components/MSTS/Export'
+import PowerBIDashboard from './components/MSTS/PowerBIDashboard';
 
 
 const App = () => {
@@ -523,6 +524,14 @@ const App = () => {
         element={
           <ProtectedRoute allowedRoles={['stlUpdate']}>
             <UpdateStarlink />
+          </ProtectedRoute>
+        }
+        />
+        <Route
+        path='dashboard'
+        element={
+          <ProtectedRoute allowedRoles={['mstsUpdate']}>
+            <PowerBIDashboard />
           </ProtectedRoute>
         }
         />

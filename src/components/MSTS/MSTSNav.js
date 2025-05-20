@@ -5,6 +5,7 @@ import MSTSPTI from "./MSTSPTI";
 import MSTSReefer from "./MSTSReefer";
 import MSTSTechnical from "./MSTSTechnical";
 import MSTSDataTable from "./MSTSDataTable";
+import PowerBIDashboard from "./PowerBIDashboard";
 
 const MSTSNav = () => {
   const [selected, setSelected] = useState("maldives");
@@ -12,7 +13,9 @@ const MSTSNav = () => {
   const renderContent = () => {
     switch (selected) {
         case "all":
-        return <MSTSDataTable />;
+        return <PowerBIDashboard />;
+      case "dashboard":
+        return <PowerBIDashboard />;
       case "maldives":
         return <MSTSMaldives />;
       case "operations":
@@ -40,6 +43,14 @@ const MSTSNav = () => {
         >
             All
         </button> */}
+        <button
+          onClick={() => setSelected("dashboard")}
+          className={`px-4 py-2 border rounded ${
+            selected === "dashboard" ? "bg-blue-500 text-white" : "bg-gray-200"
+          }`}
+        >
+          Dashboard
+        </button>
         <button
           onClick={() => setSelected("maldives")}
           className={`px-4 py-2 border rounded ${

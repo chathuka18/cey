@@ -8,6 +8,8 @@ const MSTSList = () => {
       <h1 className="text-2xl font-bold mb-6 text-center">MSTS Data Viewer</h1>
       <MSTSNav />
     </div>
+    
+    
   );
 };
 
