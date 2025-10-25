@@ -18,7 +18,8 @@ const MSTSMaldives = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/msts-maldives`, { timeout: 10000 });
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/travel`, { timeout: 10000 });
+      console.log("Fetched data:", response.data); // ✅ Debug: See exact JSON returned
       setMSTS(response.data);
       setLoading(false);
     } catch (error) {
@@ -62,7 +63,7 @@ const MSTSMaldives = () => {
 
   const submitUpdate = async () => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/api/msts-maldives/${updateData.id}`, updateData);
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/travel/${updateData.id}`, updateData);
       setUpdateMode(false);
       fetchMSTS();
       alert('Record updated successfully');
@@ -75,7 +76,7 @@ const MSTSMaldives = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this record?')) {
       try {
-        await axios.delete(`${process.env.REACT_APP_API_URL}/api/msts-maldives/${id}`);
+        await axios.delete(`${process.env.REACT_APP_API_URL}/api/travel/${id}`);
         fetchMSTS();
         alert('Record deleted successfully');
       } catch (error) {
@@ -90,8 +91,8 @@ const MSTSMaldives = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
-      <div className="w-full max-w-5xl bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-3xl font-semibold mb-4 text-center text-gray-800">Maldives And Export</h2>
+      <div className="w-full max-w-5xl bg-white shadow-lg rounded-xl p-6">
+        <h2 className="text-3xl font-bold mb-6 text-center text-blue-700">MSTS - Maldives</h2>
         <div className="mb-6 flex justify-between">
           <button
             onClick={fetchMSTS}
@@ -100,9 +101,10 @@ const MSTSMaldives = () => {
             Refresh
           </button>
         </div>
+
         {updateMode ? (
           <div className="mb-6 p-4 border border-gray-200 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold mb-3">Update Record</h3>
+            <h3 className="text-xl font-semibold mb-3 text-gray-800">Update Record</h3>
             {Object.keys(updateData).map((key) => (
               <div key={key} className="mb-3">
                 <label className="block text-sm font-medium text-gray-700">{key.replace(/_/g, ' ')}</label>
@@ -135,29 +137,45 @@ const MSTSMaldives = () => {
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full bg-white border border-gray-300 rounded-lg shadow-md">
-              <thead className="bg-gray-100">
+              <thead className="bg-blue-50">
                 <tr>
-                  {[ 'Date', 'No. of Perishable Exports', 'No. of Inspections (Maldives)', 'No. of Repairs (Maldives)'].map((field) => (
+                  {[
+                    'Date',
+                    'No. of Monthly Service',
+                    'No. of PTI',
+                    'No. of Spare Parts Supply',
+                    'No. of Repairs',
+                    'No. of Renting',
+                    'No. of Inspection',
+                  ].map((field) => (
                     <th
                       key={field}
                       className="px-4 py-2 cursor-pointer text-left text-gray-700 hover:text-gray-900"
                       onClick={() => handleSort(field)}
                     >
-                      {field.replace(/_/g, ' ')}
+                      {field}
                       {sortField === field && (sortDirection === 'asc' ? ' ▲' : ' ▼')}
                     </th>
                   ))}
-                  <th className="px-4 py-2">Actions</th>
+                  <th className="px-4 py-2 text-left text-gray-700">Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {msts.map((item) => (
-                  <tr key={item.id} className="border-b hover:bg-gray-100">
+                {msts.map((item, index) => (
+                  <tr
+                    key={item.id}
+                    className={`border-b ${
+                      index % 2 === 0 ? 'bg-gray-50' : 'bg-white'
+                    } hover:bg-blue-50 transition`}
+                  >
                     <td className="px-4 py-2">{formatDate(item.date)}</td>
-                    <td className="px-4 py-2">{item.no_of_perishable_exports}</td>
-                    <td className="px-4 py-2">{item.no_of_inspections_maldives}</td>
-                    <td className="px-4 py-2">{item.no_of_repairs_maldives}</td>
-                    <td className="px-4 py-2">
+                    <td className="px-4 py-2">{item.tickets_Seafarer}</td>
+                    <td className="px-4 py-2">{item.tickets_FIT_Corporate}</td>
+                    <td className="px-4 py-2">{item.outbound}</td>
+                    <td className="px-4 py-2">{item.inbound}</td>
+                    <td className="px-4 py-2">{item.visa}</td>
+                    <td className="px-4 py-2">{item.insurance}</td>
+                    <td className="px-4 py-2 space-x-2">
                       
                       <button
                         onClick={() => handleDelete(item.id)}

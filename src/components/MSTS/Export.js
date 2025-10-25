@@ -22,37 +22,46 @@ const Export = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+    
+        // Prepare the data object to send
+        const payload = {
+            tickets_Seafarer: travel.ticketsSeafarer,
+            tickets_FIT_Corporate: travel.ticketsFitCorporate,
+            outbound: travel.outbound,
+            inbound: travel.inbound,
+            visa: travel.visa,
+            insurance: travel.insurance,
+            date: travel.date,
+        };
+    
+        // ✅ Print the JSON payload in the console before sending
+        console.log("📦 Data being sent to the backend:", JSON.stringify(payload, null, 2));
+    
         try {
-            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/travel`, {
-                tickets_Seafarer: travel.ticketsSeafarer,
-                tickets_FIT_Corporate: travel.ticketsFitCorporate,
-                outbound: travel.outbound,
-                inbound: travel.inbound,
-                visa: travel.visa,
-                insurance: travel.insurance,
-                date: travel.date,
-            });
-            setSuccess('Maldives data added successfully!');
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/travel`, payload);
+    
+            setSuccess("Maldives data added successfully!");
             setError(null);
             setTravel({
-                ticketsSeafarer: '',
-                ticketsFitCorporate: '',
-                outbound: '',
-                inbound: '',
-                visa: '',
-                insurance: '',
-                date: '',
+                ticketsSeafarer: "",
+                ticketsFitCorporate: "",
+                outbound: "",
+                inbound: "",
+                visa: "",
+                insurance: "",
+                date: "",
             });
         } catch (error) {
-            console.error('There was an error adding the data!', error);
+            console.error("❌ There was an error adding the data!", error);
             if (error.response && error.response.status === 409) {
-                setError('A record with this ID already exists. Please use a different ID.');
+                setError("A record with this ID already exists. Please use a different ID.");
             } else {
-                setError('There was an error adding the data!');
+                setError("There was an error adding the data!");
             }
             setSuccess(null);
         }
     };
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-100 p-6">
